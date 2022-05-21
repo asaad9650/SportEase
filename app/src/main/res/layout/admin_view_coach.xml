@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/academy_item_layout"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:layout_marginRight="20dp"
+            android:text="Name"
+            android:textStyle="bold"
+            android:id="@+id/recycler_coach_name"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler_coach_serial"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:text="S.No"
+            android:layout_marginLeft="20dp"
+            />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:id="@+id/btn_coach_view_details"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:elevation="4dp"
+        android:layout_margin="5dp"
+        android:layout_marginTop="15dp"
+        android:text="View Details"
+        android:textColor="@color/whiteVar"
+        android:padding="10dp"
+        android:textSize="15sp"
+        android:background="@drawable/button_round"
+        />
+
+
+</LinearLayout>

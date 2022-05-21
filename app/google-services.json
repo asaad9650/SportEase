@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "788303315610",
+    "firebase_url": "https://sporteaze-60476-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "sporteaze-60476",
+    "storage_bucket": "sporteaze-60476.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788303315610:android:39e10c90298ebfe7bc1523",
+        "android_client_info": {
+          "package_name": "com.fyp.sporteaze"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788303315610-toctb6dercjruhssecolhvlh5r231tm2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWGYfj7_UNZLcP8K86AeEDWEGyr9iqFFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "788303315610-toctb6dercjruhssecolhvlh5r231tm2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

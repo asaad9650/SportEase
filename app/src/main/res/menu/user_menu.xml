@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.mikejames.myapplication.MainActivity">
+
+    <item
+        android:id="@+id/action_bar_coaches"
+        android:orderInCategory="100"
+        android:title="Individual Coach"
+        android:icon="@drawable/coach_icon"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_bar_academy"
+        android:orderInCategory="100"
+        android:title="Academy Registration"
+        android:icon="@drawable/academy_logo"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_bar_grounds"
+        android:orderInCategory="100"
+        android:title="Update profile"
+        android:icon="@drawable/user_update_icon"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_bar_my_coach"
+        android:orderInCategory="100"
+        android:title="My Coach"
+        android:icon="@drawable/coach_icon"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_bar_my_academy"
+        android:orderInCategory="100"
+        android:title="My Academy"
+        android:icon="@drawable/coach_icon"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_bar_chat"
+        android:orderInCategory="100"
+        android:title="Chat"
+        android:icon="@drawable/ic_baseline_chat_24"
+        app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="100"
+        android:title="Logout"
+        android:icon="@drawable/logout_icon"
+        app:showAsAction="never"/>
+</menu>

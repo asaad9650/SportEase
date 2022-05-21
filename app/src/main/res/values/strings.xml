@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sporteaze</string>
+    <string name="gender">Gender</string>
+    <string name="Password">Password</string>
+    <string name="Open_nav_drawer">Open navigation drawer</string>
+    <string name="Close_nav_drawer">Close navigation drawer</string>
+    <string name="title_activity_my_team_booking_details">MyTeamBookingDetails</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+</resources>

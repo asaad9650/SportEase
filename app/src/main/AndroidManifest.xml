@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fyp.sporteaze">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Sporteaze">
+        <activity
+            android:name=".User.UserChatWith"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserChat"
+            android:exported="false" />
+        <activity
+            android:name=".User.MyTeamBookingDetails"
+            android:exported="false" />
+        <activity
+            android:name=".User.TeamGroundBookingDetails"
+            android:exported="false" />
+        <activity
+            android:name=".User.TeamCoachBookingDetails"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserMyAcademy"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserMyCoach"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserUpdateTeam"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.RentRequest.AcademyTeamRentRequest"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserTeamAcademyRegistration"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.AcademyDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AdminViewGrounds"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AdminViewCoaches"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.RentRequest.AcademyRentRequest"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserShowAcademies"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserAcademyRegistration"
+            android:exported="false" />
+        <activity
+            android:name=".User.IndividualCoachBooking"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.RentRequest.GroundRentRequest"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.RentRequest.CoachRentRequest"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserMyTeam"
+            android:exported="false" />
+        <activity
+            android:name=".User.UsersBookings"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserViewCoach"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserViewGrounds"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserViewInvitations"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserAddTeam"
+            android:exported="false" />
+        <activity
+            android:name=".User.UserUpdateProfile"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.Ground.AcademyGroundUpdate"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.Ground.AcademyViewGround"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.Ground.AcademyAddGround"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.Ground.AcademyGroundHome"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.Coach.AcademyCoachUpdate"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.Coach.AcademyViewCoaches"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.Coach.AddCoach"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.Coach.AcademyCoachHome"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AdminAcademyUpdate"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AdminShowAcademies"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AdminShowUsers"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.RentRequest.AcademyHome"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.AcademyLogin"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AdminCreateAcademy"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AdminHome"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AdminLogin"
+            android:exported="false" />
+        <activity
+            android:name=".User.DashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CodeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

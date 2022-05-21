@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/academy_item_layout"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_user_id"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:text="ID"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:layout_marginLeft="17dp"
+            android:text="Name"
+            style="bold"
+            android:id="@+id/layout_user_name"
+
+            />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:id="@+id/btn_show_user_details"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:elevation="4dp"
+        android:layout_margin="5dp"
+        android:layout_marginTop="15dp"
+        android:text="View Details"
+        android:textColor="@color/whiteVar"
+        android:padding="10dp"
+        android:textSize="15sp"
+        android:background="@drawable/button_round"
+        />
+
+
+</LinearLayout>
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--&lt;!&ndash;<androidx.cardview.widget.CardView &ndash;&gt;-->
+
+<!--&lt;!&ndash;    android:layout_margin="5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_height="wrap_content">&ndash;&gt;-->
+
+<!--&lt;!&ndash;    &ndash;&gt;-->
+
+<!--&lt;!&ndash;</androidx.cardview.widget.CardView>&ndash;&gt;-->
+
+
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:background="@drawable/user_item_layout"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:orientation="vertical"-->
+<!--    android:layout_margin="5dp"-->
+<!--    android:padding="5dp"-->
+<!--    >-->
+<!--<TextView-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:id="@+id/recycler_user_id"-->
+<!--    android:textSize="20sp"-->
+<!--    android:textColor="#000"-->
+<!--    android:text="HI"-->
+<!--    />-->
+<!--<TextView-->
+<!--    android:id="@+id/recylcer_user_email"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:textSize="18sp"-->
+<!--    android:textColor="#000"-->
+<!--    android:text="HI"-->
+
+<!--    />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/recycler_user_name"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="#000"-->
+<!--        android:text="HI"-->
+<!--        />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/recycler_user_address"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="#000"-->
+<!--        android:text="HI"-->
+
+<!--        />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/recycler_user_cnic"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="#000"-->
+<!--        android:text="HI"-->
+
+<!--        />-->
+<!--    <TextView-->
+<!--    android:id="@+id/recycler_user_dob"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:textSize="18sp"-->
+<!--    android:textColor="#000"-->
+<!--    android:text="HI"-->
+
+<!--    />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/recycler_user_gender"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="#000"-->
+<!--        android:text="HI"-->
+
+<!--        />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/recycler_user_phone"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="#000"-->
+<!--        android:text="HI"-->
+
+<!--        />-->
+<!--    -->
+
+
+<!--</LinearLayout>-->
