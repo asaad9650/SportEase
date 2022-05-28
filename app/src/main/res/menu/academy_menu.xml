@@ -39,7 +39,12 @@
         android:icon="@drawable/team_logo"
         app:showAsAction="never" />
 
-
+    <item
+        android:id="@+id/action_bar_team_invoice"
+        android:orderInCategory="100"
+        android:title="Invoice"
+        android:icon="@drawable/ic_baseline_receipt_24"
+        app:showAsAction="never" />
 
 
 

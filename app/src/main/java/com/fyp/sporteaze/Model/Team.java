@@ -2,7 +2,7 @@ package com.fyp.sporteaze.Model;
 
 public class Team {
     public String team_name;
-    public String email_1_captain,email_2_vice_captain,email_3,email_4,email_5,email_6,email_7,email_8,email_9,email_10,email_11;
+        public String email_1_captain,email_2_vice_captain,email_3,email_4,email_5,email_6,email_7,email_8,email_9,email_10,email_11;
     public String team_id;
     public String created_by;
 

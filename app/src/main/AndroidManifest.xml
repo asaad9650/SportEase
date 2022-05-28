@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sporteaze">
         <activity
+            android:name=".Academy.Invoice.AcademyGenerateInvoice"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.Invoice.AcademyActivityInvoice"
+            android:exported="false" />
+        <activity
             android:name=".User.UserChatWith"
             android:exported="false" />
         <activity

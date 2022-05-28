@@ -109,7 +109,7 @@ public class UserAddTeam extends AppCompatActivity {
         et_email_8 = findViewById(R.id.et_email_8);
         et_email_9 = findViewById(R.id.et_email_9);
         et_email_10 = findViewById(R.id.et_email_10);
-        btn_add_team = findViewById(R.id.btn_add_team);
+        btn_add_team = findViewById(R.id.btn_add_team_new);
 
         statusCheckRef = FirebaseDatabase.getInstance().getReference();
 
@@ -169,12 +169,14 @@ public class UserAddTeam extends AppCompatActivity {
         btn_add_team.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (et_email_1.getText().toString().trim().matches(emailPattern) || et_email_2.getText().toString().trim().matches(emailPattern)
-                        || et_email_3.getText().toString().trim().matches(emailPattern) || et_email_4.getText().toString().trim().matches(emailPattern)
-                        || et_email_5.getText().toString().trim().matches(emailPattern) || et_email_6.getText().toString().trim().matches(emailPattern)
-                        || et_email_7.getText().toString().trim().matches(emailPattern) || et_email_8.getText().toString().trim().matches(emailPattern)
-                        || et_email_9.getText().toString().trim().matches(emailPattern)|| et_email_10.getText().toString().trim().matches(emailPattern))
+
+                if (et_email_1.getText().toString().trim().matches(emailPattern) && et_email_2.getText().toString().trim().matches(emailPattern)
+                        && et_email_3.getText().toString().trim().matches(emailPattern) && et_email_4.getText().toString().trim().matches(emailPattern)
+                        && et_email_5.getText().toString().trim().matches(emailPattern) && et_email_6.getText().toString().trim().matches(emailPattern)
+                        && et_email_7.getText().toString().trim().matches(emailPattern) && et_email_8.getText().toString().trim().matches(emailPattern)
+                        && et_email_9.getText().toString().trim().matches(emailPattern)&& et_email_10.getText().toString().trim().matches(emailPattern))
                 {
+                    Toast.makeText(UserAddTeam.this, "All emails are valid", Toast.LENGTH_SHORT).show();
                     if(user_email.matches(et_email_1.getText().toString()) ||user_email.matches(et_email_2.getText().toString())||
                             user_email.matches(et_email_3.getText().toString())||user_email.matches(et_email_4.getText().toString())||
                             user_email.matches(et_email_5.getText().toString())||user_email.matches(et_email_6.getText().toString())||
@@ -194,7 +196,7 @@ public class UserAddTeam extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 for (DataSnapshot dsTeam : snapshot.getChildren()) {
                                     Team team = dsTeam.getValue(Team.class);
-//                                Toast.makeText(UserAddTeam.this, team.getEmail_1_captain().toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UserAddTeam.this, team.getEmail_1_captain().toString(), Toast.LENGTH_SHORT).show();
                                     if (et_email_1.getText().toString().matches(team.getEmail_1_captain()) ||
                                             et_email_1.getText().toString().matches(team.getEmail_2_vice_captain()) ||
                                             et_email_1.getText().toString().matches(team.getEmail_3()) ||
@@ -658,6 +660,7 @@ public class UserAddTeam extends AppCompatActivity {
 //    }
 
     void pushIntoUser(Team team , String member_email){
+//        Toast.makeText(this, member_email, Toast.LENGTH_SHORT).show();
         ref.child("Users").orderByChild("email").equalTo(member_email).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.fyp.sporteaze.Academy.Coach.AcademyCoachHome;
 import com.fyp.sporteaze.Academy.Ground.AcademyGroundHome;
+import com.fyp.sporteaze.Academy.Invoice.AcademyActivityInvoice;
 import com.fyp.sporteaze.Academy.RentRequest.AcademyHome;
 import com.fyp.sporteaze.Academy.RentRequest.AcademyRentRequest;
 import com.fyp.sporteaze.Academy.RentRequest.AcademyTeamRentRequest;
@@ -132,6 +133,21 @@ public class AcademyDashboard extends AppCompatActivity {
                 {
 
                     Intent intent = new Intent(AcademyDashboard.this, AcademyRentRequest.class);
+                    intent.putExtra("academy_email", academy_email);
+                    intent.putExtra("academy_id",academy_id);
+                    intent.putExtra("academy_name", academy_name);
+                    startActivity(intent);
+//                    Toast.makeText(getApplicationContext() , item.getTitle().toString() , Toast.LENGTH_SHORT).show();
+
+//                    Intent intent = new Intent(MainActivity.this , Door_Lock_Unlock.class);
+//                    startActivity(intent);
+//                    finish();
+//                    return true;
+                }
+                else if (item.getTitle().equals("Invoice"))
+                {
+
+                    Intent intent = new Intent(AcademyDashboard.this, AcademyActivityInvoice.class);
                     intent.putExtra("academy_email", academy_email);
                     intent.putExtra("academy_id",academy_id);
                     intent.putExtra("academy_name", academy_name);

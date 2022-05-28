@@ -50,11 +50,13 @@ public class UserChatAdapter extends RecyclerView.Adapter{
             viewHolderClass.linear_chat_layout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(), "Chat with " +users.email +  " " + user_id , Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(view.getContext(), "Chat with " +users.email +  " " + user_id , Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent( view.getContext(), UserChatWith.class);
                     intent.putExtra("user_id", user_id);
                     intent.putExtra("user_chat_with_id",users.user_id);
+                    intent.putExtra("user_profile_pic" , users.image);
+                    intent.putExtra("user_city_name" , users.address);
                     if(users.name.matches("")){
                         intent.putExtra("user_chat_with" , users.email);
                     }
