@@ -4,14 +4,43 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sporteaze">
+        <activity
+            android:name=".Event.UserShowPost"
+            android:exported="false" />
+        <activity
+            android:name=".Event.UserEventViewPastMatches"
+            android:exported="false" />
+        <activity
+            android:name=".Event.UserEventViewSchedule"
+            android:exported="false" />
+        <activity
+            android:name=".Event.UserInvitePlayers"
+            android:exported="false" />
+        <activity
+            android:name=".Event.UserEventHome"
+            android:exported="false" />
+        <activity
+            android:name=".Event.UserCreateEvent"
+            android:exported="false" />
+        <activity
+            android:name=".Teams.TeamRentGround"
+            android:exported="false" />
+        <activity
+            android:name=".Teams.TeamRentCoach"
+            android:exported="false" />
+        <activity
+            android:name=".Academy.Invoice.AcademyViewInvoice"
+            android:exported="false" />
         <activity
             android:name=".Academy.Invoice.AcademyGenerateInvoice"
             android:exported="false" />

@@ -1,29 +1,20 @@
 package com.fyp.sporteaze.User;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.fyp.sporteaze.Academy.Coach.AcademyCoachHome;
-import com.fyp.sporteaze.Academy.Ground.AcademyGroundHome;
 import com.fyp.sporteaze.BackPressDialog;
+import com.fyp.sporteaze.Event.UserEventHome;
 import com.fyp.sporteaze.LoginActivity;
 import com.fyp.sporteaze.Model.User;
 import com.fyp.sporteaze.R;
@@ -35,12 +26,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class DashboardActivity extends AppCompatActivity  {
-
-String user_name, user_email, user_id , captain;
-ConstraintLayout add_team_box , view_invitations_box, view_box , view_bookings_box;
-FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-DatabaseReference reference = firebaseDatabase.getReference();
-BackPressDialog backPressDialog = new BackPressDialog();
+    String user_name, user_email, user_id , captain , team_id ,user_phone, user_address , user_dob;
+    ConstraintLayout add_team_box , view_invitations_box, view_box , view_bookings_box , view_events_box , view_post_box;
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference reference = firebaseDatabase.getReference();
+    BackPressDialog backPressDialog = new BackPressDialog();
 
 
     @Override
@@ -56,6 +46,10 @@ BackPressDialog backPressDialog = new BackPressDialog();
         user_email = extras.getString("user_email");
         user_id = extras.getString("user_id");
         captain = extras.getString("captain");
+        team_id = extras.getString("team_id");
+        user_phone = extras.getString("user_phone");
+        user_address = extras.getString("user_address");
+        user_dob = extras.getString("user_dob");
 
 //        Toast.makeText(DashboardActivity.this, user_email+captain, Toast.LENGTH_LONG).show();
 //        user_id = extras.getString("user_id");
@@ -69,6 +63,7 @@ BackPressDialog backPressDialog = new BackPressDialog();
 
         view_box = findViewById(R.id.view_teams_box);
         view_bookings_box = findViewById(R.id.view_bookings_box);
+        view_events_box = findViewById(R.id.view_events_box);
 //        view_bookings_box.setVisibility(View.GONE);
         DatabaseReference creator_ref = FirebaseDatabase.getInstance().getReference();
 
@@ -87,11 +82,26 @@ BackPressDialog backPressDialog = new BackPressDialog();
             }
         });
 
+        view_events_box.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DashboardActivity.this, UserEventHome.class);
+                intent.putExtra("user_id", user_id);
+                intent.putExtra("user_name" , user_name);
+                intent.putExtra("user_email" , user_email);
+                intent.putExtra("team_id" , team_id);
+                startActivity(intent);
+
+            }
+        });
+
         if("yes".equalsIgnoreCase(captain)){
             view_bookings_box.setVisibility(View.VISIBLE);
+            view_events_box.setVisibility(View.VISIBLE);
         }
         else{
-            view_bookings_box.setVisibility(View.INVISIBLE);
+            view_bookings_box.setVisibility(View.GONE);
+            view_events_box.setVisibility(View.GONE);
         }
 
 
@@ -204,13 +214,35 @@ BackPressDialog backPressDialog = new BackPressDialog();
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getTitle().equals("Home")){
+//                    Intent intent = new Intent(DashboardActivity.this, DashboardActivity.class);
+//                    intent.putExtra("user_email" , user_email);
+//                    intent.putExtra("user_name", user_name);
+//                    intent.putExtra("captain" , captain);
+//                    intent.putExtra("user_id", user_id);
+//                    intent.putExtra("user_dob", user_dob);
+//                    intent.putExtra("user_phone" , user_phone);
+//                    intent.putExtra("user_address" , user_address);
+//                    intent.putExtra("team_id" , team_id);
+//
+////                                    intent.putExtra("user_id",userMod.user_id);
+//                    startActivity(intent);
+//                    drawer.closeDrawers();
+                }
                 if(item.getTitle().equals("Individual Coach"))
                 {
                     //  googleAuth.getInstance().signOut();
                     Intent intent = new Intent(DashboardActivity.this , IndividualCoachBooking.class);
-                    intent.putExtra("user_id" ,user_id);
-                    intent.putExtra("user_name",user_name);
-                    intent.putExtra("user_email",user_email);
+                    intent.putExtra("user_email" , user_email);
+                    intent.putExtra("user_name", user_name);
+                    intent.putExtra("captain" , captain);
+                    intent.putExtra("user_id", user_id);
+                    intent.putExtra("user_dob", user_dob);
+                    intent.putExtra("user_phone" , user_phone);
+                    intent.putExtra("user_address" , user_address);
+                    intent.putExtra("team_id" , team_id);
+
+//                                    intent.putExtra("user_id",userMod.user_id);
                     startActivity(intent);
 //                    finish();
 //                    Toast.makeText(getApplicationContext() , item.getTitle().toString() , Toast.LENGTH_SHORT).show();
@@ -221,12 +253,17 @@ BackPressDialog backPressDialog = new BackPressDialog();
                 {
                     //  googleAuth.getInstance().signOut();
                     Intent intent = new Intent(DashboardActivity.this , UserMyCoach.class);
-                    intent.putExtra("user_id" ,user_id);
-                    intent.putExtra("user_name",user_name);
-                    intent.putExtra("user_email",user_email);
+                    intent.putExtra("user_email" , user_email);
+                    intent.putExtra("user_name", user_name);
+                    intent.putExtra("captain" , captain);
+                    intent.putExtra("user_id", user_id);
+                    intent.putExtra("user_dob", user_dob);
+                    intent.putExtra("user_phone" , user_phone);
+                    intent.putExtra("user_address" , user_address);
+                    intent.putExtra("team_id" , team_id);
+
+//                                    intent.putExtra("user_id",userMod.user_id);
                     startActivity(intent);
-//                    finish();
-//                    Toast.makeText(getApplicationContext() , item.getTitle().toString() , Toast.LENGTH_SHORT).show();
                     drawer.closeDrawers();
 //                    return true;
                 }
@@ -234,12 +271,17 @@ BackPressDialog backPressDialog = new BackPressDialog();
                 {
                     //  googleAuth.getInstance().signOut();
                     Intent intent = new Intent(DashboardActivity.this , UserChat.class);
-                    intent.putExtra("user_id" ,user_id);
-                    intent.putExtra("user_name",user_name);
-                    intent.putExtra("user_email",user_email);
+                    intent.putExtra("user_email" , user_email);
+                    intent.putExtra("user_name", user_name);
+                    intent.putExtra("captain" , captain);
+                    intent.putExtra("user_id", user_id);
+                    intent.putExtra("user_dob", user_dob);
+                    intent.putExtra("user_phone" , user_phone);
+                    intent.putExtra("user_address" , user_address);
+                    intent.putExtra("team_id" , team_id);
+
+//                                    intent.putExtra("user_id",userMod.user_id);
                     startActivity(intent);
-//                    finish();
-//                    Toast.makeText(getApplicationContext() , item.getTitle().toString() , Toast.LENGTH_SHORT).show();
                     drawer.closeDrawers();
 //                    return true;
                 }
@@ -247,12 +289,17 @@ BackPressDialog backPressDialog = new BackPressDialog();
                 {
                     //  googleAuth.getInstance().signOut();
                     Intent intent = new Intent(DashboardActivity.this , UserMyAcademy.class);
-                    intent.putExtra("user_id" ,user_id);
-                    intent.putExtra("user_name",user_name);
-                    intent.putExtra("user_email",user_email);
+                    intent.putExtra("user_email" , user_email);
+                    intent.putExtra("user_name", user_name);
+                    intent.putExtra("captain" , captain);
+                    intent.putExtra("user_id", user_id);
+                    intent.putExtra("user_dob", user_dob);
+                    intent.putExtra("user_phone" , user_phone);
+                    intent.putExtra("user_address" , user_address);
+                    intent.putExtra("team_id" , team_id);
+
+//                                    intent.putExtra("user_id",userMod.user_id);
                     startActivity(intent);
-//                    finish();
-//                    Toast.makeText(getApplicationContext() , item.getTitle().toString() , Toast.LENGTH_SHORT).show();
                     drawer.closeDrawers();
 //                    return true;
                 }
@@ -260,10 +307,16 @@ BackPressDialog backPressDialog = new BackPressDialog();
                 {
                     //  googleAuth.getInstance().signOut();
                     Intent intent = new Intent(DashboardActivity.this , UserShowAcademies.class);
-                    intent.putExtra("user_id" ,user_id);
-//                    intent.putExtra("user_name",user.name);
-                    intent.putExtra("user_email",user_email);
-                    intent.putExtra("individual_academy", "individual_academy");
+                    intent.putExtra("user_email" , user_email);
+                    intent.putExtra("user_name", user_name);
+                    intent.putExtra("captain" , captain);
+                    intent.putExtra("user_id", user_id);
+                    intent.putExtra("user_dob", user_dob);
+                    intent.putExtra("user_phone" , user_phone);
+                    intent.putExtra("user_address" , user_address);
+                    intent.putExtra("team_id" , team_id);
+
+//                                    intent.putExtra("user_id",userMod.user_id);
                     startActivity(intent);
 //                    finish();
 //                    Toast.makeText(getApplicationContext() , item.getTitle().toString() , Toast.LENGTH_SHORT).show();
@@ -330,17 +383,7 @@ BackPressDialog backPressDialog = new BackPressDialog();
 
     }
 
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-           backPressDialog.logout(this);
-
-            //moveTaskToBack(false);
-
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
 
 
 }

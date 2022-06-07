@@ -1,9 +1,5 @@
 package com.fyp.sporteaze.Academy.Ground;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -17,10 +13,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.fyp.sporteaze.Academy.Coach.AddCoach;
-import com.fyp.sporteaze.Model.Coach;
 import com.fyp.sporteaze.Model.Ground;
 import com.fyp.sporteaze.R;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -105,14 +103,9 @@ public class AcademyAddGround extends AppCompatActivity {
                     Toast.makeText(getApplicationContext() , "Please fill all fields." , Toast.LENGTH_SHORT).show();
                 }
                 else{
-//                    if(et_academy_email.getText().toString().contains("@"))
-//                    {
-//                        if(et_academy_password.getText().toString().length()>6){
+
                     upload_to_firebase();
-//                        }
-//                        else{
-//                            Toast.makeText(getApplicationContext() , "Password should be at least 7 characters" , Toast.LENGTH_SHORT).show();
-//                        }
+
                 }
             }
         });

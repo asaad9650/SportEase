@@ -5,6 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.mikejames.myapplication.MainActivity">
 
+
+    <item
+        android:id="@+id/action_bar_home"
+        android:orderInCategory="100"
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24"
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_bar_coaches"
         android:orderInCategory="100"
@@ -44,7 +51,6 @@
         android:title="Chat"
         android:icon="@drawable/ic_baseline_chat_24"
         app:showAsAction="never" />
-
 
     <item
         android:id="@+id/action_logout"

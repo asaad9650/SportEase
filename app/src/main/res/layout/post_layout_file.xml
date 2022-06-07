@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:layout_margin="5dp"
+
+    android:background="@drawable/academy_item_layout"
+    >
+
+    <TextView
+        android:id="@+id/post_team_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Team Name : "
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Captain : "
+        android:textSize="18sp"
+        android:id="@+id/post_captain_email"
+        android:textColor="#000"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Looking for: "
+        android:textSize="16sp"
+        android:id="@+id/post_looking_for"
+        android:textColor="#000"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Preferred Age: "
+        android:textSize="16sp"
+        android:id="@+id/post_preferred_age"
+        android:textColor="#000"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remaining Space: "
+        android:textSize="16sp"
+        android:id="@+id/post_remaining_space"
+        android:textColor="#000"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mesage: "
+        android:textSize="16sp"
+        android:id="@+id/post_message"
+        android:textColor="#000"
+
+
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Join Team"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:textColor="#000"
+        android:background="@drawable/button_round"
+        android:id="@+id/post_submit_btn"
+        />
+
+
+</LinearLayout>

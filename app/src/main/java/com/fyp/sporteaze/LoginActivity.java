@@ -1,9 +1,5 @@
 package com.fyp.sporteaze;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,11 +10,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+
 import com.fyp.sporteaze.Academy.AcademyLogin;
-import com.fyp.sporteaze.Academy.RentRequest.AcademyHome;
 import com.fyp.sporteaze.Admin.AdminLogin;
+import com.fyp.sporteaze.Event.UserShowPost;
 import com.fyp.sporteaze.Model.User;
-import com.fyp.sporteaze.User.DashboardActivity;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -97,17 +96,22 @@ public class LoginActivity extends AppCompatActivity {
                         if(snapshot.exists()){
                             for(DataSnapshot user: snapshot.getChildren()){
                                 User userMod = user.getValue(User.class);
-
+                                String team_id = user.child("team_id").getValue(String.class);
+//                                Toast.makeText(LoginActivity.this, team_id, Toast.LENGTH_SHORT).show();
                                 if(userMod.password.equals(password.getText().toString().trim())){
                                   //  editor = sharedPreferences.edit();
                                   //  editor.putBoolean("login", true);
                                   //  editor.commit();
                                     Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, UserShowPost.class);
                                     intent.putExtra("user_email" , userMod.email);
                                     intent.putExtra("user_name", userMod.name);
                                     intent.putExtra("captain" , userMod.captain);
                                     intent.putExtra("user_id", userMod.user_id);
+                                    intent.putExtra("user_dob", userMod.dob);
+                                    intent.putExtra("user_phone" , userMod.phone);
+                                    intent.putExtra("user_address" , userMod.address);
+                                    intent.putExtra("team_id" , team_id);
 
 //                                    intent.putExtra("user_id",userMod.user_id);
                                     startActivity(intent);

@@ -1,5 +1,11 @@
 package com.fyp.sporteaze.Academy.Invoice;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,20 +13,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-
-import com.fyp.sporteaze.Academy.AcademyDashboard;
 import com.fyp.sporteaze.Academy.Coach.AcademyCoachHome;
 import com.fyp.sporteaze.Academy.Ground.AcademyGroundHome;
 import com.fyp.sporteaze.Academy.RentRequest.AcademyHome;
 import com.fyp.sporteaze.Academy.RentRequest.AcademyRentRequest;
 import com.fyp.sporteaze.Academy.RentRequest.AcademyTeamRentRequest;
-import com.fyp.sporteaze.Academy.RentRequest.CoachRentRequest;
-import com.fyp.sporteaze.Academy.RentRequest.GroundRentRequest;
 import com.fyp.sporteaze.LoginActivity;
 import com.fyp.sporteaze.R;
 import com.google.android.material.navigation.NavigationView;
@@ -37,11 +34,11 @@ public class AcademyActivityInvoice extends AppCompatActivity {
         view_ground_request_box = findViewById(R.id.view_ground_request_box);
         view_coach_request_box = findViewById(R.id.view_coach_request_box);
 
-        Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
-        academy_email = extras.getString("academy_email");
-        academy_id = extras.getString("academy_id");
-        academy_name = extras.getString("academy_name");
+            Intent intent = getIntent();
+            Bundle extras = intent.getExtras();
+            academy_email = extras.getString("academy_email");
+            academy_id = extras.getString("academy_id");
+            academy_name = extras.getString("academy_name");
         Toolbar toolbar = (Toolbar)findViewById(R.id.academy_toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar()!=null)
@@ -66,11 +63,11 @@ public class AcademyActivityInvoice extends AppCompatActivity {
         view_ground_request_box.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AcademyActivityInvoice.this , GroundRentRequest.class);
+                Intent intent = new Intent(AcademyActivityInvoice.this , AcademyViewInvoice.class);
                 intent.putExtra("academy_email", academy_email);
                 intent.putExtra("academy_id",academy_id);
                 intent.putExtra("academy_name", academy_name);
-//                startActivity(intent);
+                startActivity(intent);
             }
         });
 

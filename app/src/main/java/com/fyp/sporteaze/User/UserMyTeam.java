@@ -1,30 +1,27 @@
 package com.fyp.sporteaze.User;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.fyp.sporteaze.Event.UserShowPost;
 import com.fyp.sporteaze.Model.Team;
-import com.fyp.sporteaze.Model.UserTeamInfo;
 import com.fyp.sporteaze.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.NumberFormat;
@@ -33,6 +30,7 @@ import java.text.ParseException;
 public class UserMyTeam extends AppCompatActivity {
     TextView my_team_name , my_team__no_of_player , no_teams_added_yet;
     AppCompatButton btn_view_my_team ;
+    ConstraintLayout view_post_box;
 
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference ref = firebaseDatabase.getReference();
@@ -51,11 +49,12 @@ public class UserMyTeam extends AppCompatActivity {
         btn_view_my_team = findViewById(R.id.btn_vieww_my_team);
         no_teams_added_yet = findViewById(R.id.no_teams_added_yet);
 
-
+        view_post_box = findViewById(R.id.view_post_box);
         btn_view_my_team.setVisibility(View.GONE);
         my_team_name.setVisibility(View.GONE);
         my_team__no_of_player.setVisibility(View.GONE);
         no_teams_added_yet.setVisibility(View.VISIBLE);
+        view_post_box.setVisibility(View.VISIBLE);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -64,7 +63,23 @@ public class UserMyTeam extends AppCompatActivity {
         captain = extras.getString("captain");
         user_name = extras.getString("user_name");
 
-        Toast.makeText(this, captain, Toast.LENGTH_SHORT).show();
+        view_post_box.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserMyTeam.this, UserShowPost.class);
+
+//                intent.putExtra("user_address",user.address );
+//                intent.putExtra("user_gender",user.gender);
+//                intent.putExtra("user_image",user.image);
+                intent.putExtra("user_id" , user_id);
+                intent.putExtra("user_email", user_email);
+                intent.putExtra("user_name",user_name);
+                intent.putExtra("captain", captain);
+                startActivity(intent);
+            }
+        });
+
+
 
 //        if("yes".equalsIgnoreCase(captain)){
 //        btn_leave_my_team.setVisibility(View.VISIBLE);
@@ -112,8 +127,6 @@ public class UserMyTeam extends AppCompatActivity {
                             TextView email3_status = dialogView.findViewById(R.id.email3_status);
                             TextView email2_status = dialogView.findViewById(R.id.email2_status);
                             TextView email1_status = dialogView.findViewById(R.id.email1_status);
-//                            status(team);
-
                             DatabaseReference status_ref = FirebaseDatabase.getInstance().getReference();
 
 
@@ -121,15 +134,8 @@ public class UserMyTeam extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     for(DataSnapshot snapshot1: snapshot.getChildren()){
-
                                         String status = (String) snapshot1.child(team_key).child("status").getValue();
-//                                        if(status.matches("yes")){
-
                                             email1_status.setText(status);
-
-
-//                                        Toast.makeText(UserMyTeam.this, status, Toast.LENGTH_SHORT).show();
-
                                     }
                                 }
 
@@ -497,9 +503,9 @@ public class UserMyTeam extends AppCompatActivity {
                     });
 
                 }
-                else{
-                    Toast.makeText(UserMyTeam.this, "Null hai saala", Toast.LENGTH_SHORT).show();
-                }
+//                else{
+//                    Toast.makeText(UserMyTeam.this, "Null hai saala", Toast.LENGTH_SHORT).show();
+//                }
 //                txt_user_coach_charges.setText("Charges: "+coaches.getCoach_charges());
 //                txt_user_coach_phone.setText("Phone: "+coaches.getCoach_phone());
             }
@@ -559,7 +565,6 @@ public class UserMyTeam extends AppCompatActivity {
     private AlertDialog AskOption(Context context , String team_id , String email , String us_id)
     {
         AlertDialog myQuittingDialogBox = new AlertDialog.Builder(context)
-                // set message, title, and icon
                 .setTitle("Leave team")
                 .setMessage("Are you sure you want to leave?")
                 .setIcon(R.drawable.ic_baseline_delete_24)
@@ -575,16 +580,11 @@ public class UserMyTeam extends AppCompatActivity {
                         else{
                             Toast.makeText(UserMyTeam.this, "Removed Successfully", Toast.LENGTH_SHORT).show();
 
-//                        DatabaseReference team_del_ref = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).
-                            //your deleting code
                             acceptRef.child("Users").child(user_id).child(team_id).removeValue();
                             acceptRef.child("Users").child(user_id).child("enrolled").setValue("no");
                             acceptRef.child("Users").child(user_id).child("team_id").removeValue();
                             removeFromTeam(team_id,user_email);
 
-//                        finish();
-//                                                dialog.dismiss();
-//                        ((Activity)context).finish();
                             Intent intent = new Intent(UserMyTeam.this , DashboardActivity.class);
                             intent.putExtra("user_id" ,user_id);
                             intent.putExtra("user_name",user_name);
@@ -595,18 +595,7 @@ public class UserMyTeam extends AppCompatActivity {
                         }
 
 
-//                        FirebaseDatabase db = FirebaseDatabase.getInstance();
-//                        DatabaseReference root = db.getReference();
-//                        academyList.remove(id);
-//
-////
-//                        root.child("academies").child(id).removeValue();
-//                        //notifyDataSetChanged();
-//                        // Activity.recreate();
-//                        dialog.dismiss();
-//                        ((Activity)context).finish();
-//                        academyList.remove(id);
-                    }
+           }
 
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -651,19 +640,16 @@ public class UserMyTeam extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot1) {
                 for(DataSnapshot dss : snapshot1.getChildren()){
                     if(dss.getKey().matches("team_name")){
-//                            Toast.makeText(UserMyTeam.this, dss.getValue().toString(), Toast.LENGTH_SHORT).show();
                         no_teams_added_yet.setVisibility(View.GONE);
+                        view_post_box.setVisibility(View.GONE);
                         my_team_name.setVisibility(View.VISIBLE);
                         my_team__no_of_player.setVisibility(View.VISIBLE);
-//                        btn_leave_my_team.setVisibility(View.VISIBLE);
                         btn_view_my_team.setVisibility(View.VISIBLE);
                         my_team_name.setText(dss.getValue().toString());
                         try {
                             int i = NumberFormat.getInstance().parse(snapshot1.getChildrenCount()+"").intValue();
                             i = i-3;
-
                             my_team__no_of_player.setText(""+i);
-
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }

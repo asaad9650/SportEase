@@ -1,22 +1,15 @@
 package com.fyp.sporteaze.User;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.fyp.sporteaze.R;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.lang.invoke.ConstantCallSite;
+import com.fyp.sporteaze.Teams.TeamRentCoach;
+import com.fyp.sporteaze.Teams.TeamRentGround;
 
 public class UsersBookings extends AppCompatActivity {
 
@@ -47,7 +40,7 @@ public class UsersBookings extends AppCompatActivity {
         coach_booking_box.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(UsersBookings.this, UserViewCoach.class);
+                Intent intent= new Intent(UsersBookings.this, TeamRentCoach.class);
                 intent.putExtra("user_id" , user_id);
                 intent.putExtra("user_email" , user_email);
                 intent.putExtra("user_name", user_name);
@@ -58,7 +51,7 @@ public class UsersBookings extends AppCompatActivity {
         ground_booking_box.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(UsersBookings.this, UserViewGrounds.class);
+                Intent intent= new Intent(UsersBookings.this, TeamRentGround.class);
                 intent.putExtra("user_id" , user_id);
                 intent.putExtra("user_email" , user_email);
                 intent.putExtra("user_name", user_name);

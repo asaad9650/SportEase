@@ -1,20 +1,16 @@
 package com.fyp.sporteaze;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
-import android.os.StrictMode;
 import android.util.Patterns;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.fyp.sporteaze.Support.GMailSender;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+
 import com.fyp.sporteaze.Support.JavaMailAPI;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,15 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Properties;
 import java.util.Random;
-
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 
@@ -98,7 +86,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                                         JavaMailAPI javaMailAPI = new JavaMailAPI(ForgotPasswordActivity.this,
                                                 email.getText().toString().trim(),
                                                 "Password Reset For Sporteaze",
-                                                "Your password reset verification code for Sporteaze is " + code);
+                                                "Your password reset verification code for Sporteaze is " + code  );
                                         javaMailAPI.execute();
 
 //                                        GMailSender sender = new GMailSender("fypsporteaze21@gmail.com", "sporteaze.22");

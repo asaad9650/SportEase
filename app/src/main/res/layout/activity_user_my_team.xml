@@ -57,7 +57,6 @@
 
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -139,6 +138,43 @@
 
 
         </LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view_post_box"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+
+
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners"
+        app:layout_constraintBottom_toBottomOf="@+id/color_box"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+
+            android:id="@+id/post_box"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@drawable/invitation"
+            android:layout_marginBottom="10dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Posts"
+            android:layout_margin="10dp"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBottomOf="@id/post_box"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </LinearLayout>
 </ScrollView>

@@ -1,24 +1,22 @@
 package com.fyp.sporteaze.User;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.fyp.sporteaze.Model.Team;
 import com.fyp.sporteaze.Model.User;
 import com.fyp.sporteaze.Model.UserTeamInfo;
 import com.fyp.sporteaze.R;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
-import java.util.Locale;
 
 public class UserAddTeam extends AppCompatActivity {
     EditText et_team_name,et_email_1,et_email_2,et_email_3,et_email_4,et_email_5,et_email_6,et_email_7,et_email_8,et_email_9,et_email_10;
@@ -419,16 +416,17 @@ public class UserAddTeam extends AppCompatActivity {
 //                    team_email11_status.setVisibility(View.GONE);
                 }
                 team_status_name.setText(team.getTeam_name());
-                team_status_email1.setText(team.getEmail_2_vice_captain());
-                team_status_email2.setText(team.getEmail_3());
-                team_status_email3.setText(team.getEmail_4());
-                team_status_email4.setText(team.getEmail_5());
-                team_status_email5.setText(team.getEmail_6());
-                team_status_email6.setText(team.getEmail_7());
-                team_status_email7.setText(team.getEmail_8());
-                team_status_email8.setText(team.getEmail_9());
-                team_status_email9.setText(team.getEmail_10());
-                team_status_email10.setText(team.getEmail_11());
+                team_status_email1.setText(team.getEmail_1_captain());
+                team_status_email2.setText(team.getEmail_2_vice_captain());
+                team_status_email3.setText(team.getEmail_3());
+                team_status_email4.setText(team.getEmail_4());
+                team_status_email5.setText(team.getEmail_5());
+                team_status_email6.setText(team.getEmail_6());
+                team_status_email7.setText(team.getEmail_7());
+                team_status_email8.setText(team.getEmail_8());
+                team_status_email9.setText(team.getEmail_9());
+                team_status_email10.setText(team.getEmail_10());
+                team_status_email11.setText(team.getEmail_11());
 
 //                getStatus(team.getEmail_2_vice_captain() , team.getTeam_id() , team);
 //                getStatus(team.getEmail_3());
