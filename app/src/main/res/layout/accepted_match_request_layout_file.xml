@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:background="@drawable/academy_item_layout"
+    android:id="@+id/accepted_request_ll"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/accepted_by_team_name"
+        android:text="Team Name"
+        android:textSize="18sp"
+        android:textColor= "#000"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_margin="5dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/accepted_by_team_captain"
+        android:text="Team Captain"
+        android:textSize="16sp"
+        android:layout_margin="3dp"
+        android:textColor= "#000"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/accepted_by_team_players"
+        android:text="Team Players"
+        android:layout_margin="3dp"
+        android:textSize="16sp"
+        android:textColor= "#000"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        >
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_weight="2"
+            android:id="@+id/accepted_by_btn_accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_round"
+            android:text="Accept"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:textColor="#fff"
+            android:layout_margin="10dp"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_weight="2"
+            android:id="@+id/accepted_by_btn_reject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_round"
+            android:text="Reject"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:textColor="#fff"
+            android:layout_margin="10dp"
+            />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
