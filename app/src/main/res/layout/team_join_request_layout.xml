@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/academy_item_layout"
+    android:padding="5dp"
+    android:layout_margin="5dp"
+    android:orientation="vertical"
+    android:id="@+id/ll_requests"
+    >
+    <TextView
+        android:id="@+id/requester_name"
+        android:text="User Name"
+        android:padding="2dp"
+        android:textColor="#000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/requester_email"
+        android:text="User Email"
+        android:padding="2dp"
+        android:textColor="#000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/requester_dob"
+        android:text="User DOB"
+        android:padding="2dp"
+        android:textColor="#000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/requester_phone"
+        android:text="User Phone"
+        android:padding="2dp"
+        android:textColor="#000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/requester_address"
+        android:text="User Address"
+        android:layout_width="match_parent"
+        android:padding="2dp"
+        android:textColor="#000"
+        android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:textColor="#000"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:id="@+id/btn_reject_request"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:elevation="4dp"
+        android:layout_margin="5dp"
+        android:layout_marginTop="15dp"
+        android:text="Reject"
+        android:textColor="@color/whiteVar"
+        android:padding="10dp"
+        android:textSize="15sp"
+        android:background="@drawable/button_round"
+        />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:id="@+id/btn_accept_request"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:elevation="4dp"
+            android:layout_margin="5dp"
+            android:layout_marginTop="15dp"
+            android:text="Accept"
+            android:textColor="@color/whiteVar"
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:background="@drawable/button_round"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

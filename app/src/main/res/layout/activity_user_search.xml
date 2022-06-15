@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".Search.UserSearch"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:id="@+id/color_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/color_round"
+        tools:ignore="MissingConstraints"
+        android:orientation="horizontal"
+        >
+
+        <EditText
+            android:id="@+id/et_search_field"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_round"
+            android:padding="10dp"
+            android:textColor="#000"
+            android:hint="Search by user name, email or team name"
+            android:textColorHint="#5E000000"
+            ></EditText>
+
+        <ImageView
+            android:id="@+id/btn_search_filter"
+            android:layout_weight="0"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_outline_filter_alt_24"
+            android:padding="5dp"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
+        android:id="@+id/search_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints" />
+
+</LinearLayout>

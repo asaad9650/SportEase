@@ -15,6 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sporteaze">
         <activity
+            android:name=".Event.AcceptedMatchRequest"
+            android:exported="false" />
+        <activity
+            android:name=".Search.UserSearch"
+            android:exported="false" />
+        <activity
+            android:name=".Event.ShowCreatedPosts"
+            android:exported="false" />
+        <activity
+            android:name=".User.TeamJoinRequests"
+            android:exported="false" />
+        <activity
             android:name=".Event.UserShowPost"
             android:exported="false" />
         <activity

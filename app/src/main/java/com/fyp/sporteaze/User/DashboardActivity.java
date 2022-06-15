@@ -2,9 +2,11 @@ package com.fyp.sporteaze.User;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -14,10 +16,14 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.fyp.sporteaze.BackPressDialog;
+import com.fyp.sporteaze.Event.AcceptedMatchRequest;
+import com.fyp.sporteaze.Event.ShowCreatedPosts;
 import com.fyp.sporteaze.Event.UserEventHome;
 import com.fyp.sporteaze.LoginActivity;
+import com.fyp.sporteaze.Model.JoinTeam;
 import com.fyp.sporteaze.Model.User;
 import com.fyp.sporteaze.R;
+import com.fyp.sporteaze.Search.UserSearch;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,7 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class DashboardActivity extends AppCompatActivity  {
     String user_name, user_email, user_id , captain , team_id ,user_phone, user_address , user_dob;
-    ConstraintLayout add_team_box , view_invitations_box, view_box , view_bookings_box , view_events_box , view_post_box;
+    ConstraintLayout add_team_box , view_invitations_box, view_box , view_bookings_box , view_events_box , view_post_box , view_team_requests_box ,view_created_matches_box , view_accepted_matches_box;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference reference = firebaseDatabase.getReference();
     BackPressDialog backPressDialog = new BackPressDialog();
@@ -60,10 +66,12 @@ public class DashboardActivity extends AppCompatActivity  {
         setSupportActionBar(toolbar);
         add_team_box = findViewById(R.id.add_team_box);
         view_invitations_box = findViewById(R.id.view_invitations_box);
-
+        view_created_matches_box = findViewById(R.id.view_created_matches_box);
         view_box = findViewById(R.id.view_teams_box);
         view_bookings_box = findViewById(R.id.view_bookings_box);
         view_events_box = findViewById(R.id.view_events_box);
+        view_team_requests_box = findViewById(R.id.view_team_requests_box);
+        view_accepted_matches_box = findViewById(R.id.view_accepted_matches_box);
 //        view_bookings_box.setVisibility(View.GONE);
         DatabaseReference creator_ref = FirebaseDatabase.getInstance().getReference();
 
@@ -98,10 +106,16 @@ public class DashboardActivity extends AppCompatActivity  {
         if("yes".equalsIgnoreCase(captain)){
             view_bookings_box.setVisibility(View.VISIBLE);
             view_events_box.setVisibility(View.VISIBLE);
+            view_team_requests_box.setVisibility(View.VISIBLE);
+            view_created_matches_box.setVisibility(View.VISIBLE);
+            view_accepted_matches_box.setVisibility(View.VISIBLE);
         }
         else{
             view_bookings_box.setVisibility(View.GONE);
             view_events_box.setVisibility(View.GONE);
+            view_team_requests_box.setVisibility(View.GONE);
+            view_created_matches_box.setVisibility(View.GONE);
+            view_accepted_matches_box.setVisibility(View.GONE);
         }
 
 
@@ -118,6 +132,19 @@ public class DashboardActivity extends AppCompatActivity  {
 //        });
 
 //        Toast.makeText(DashboardActivity.this, "is creater "+ isCreator.toString(), Toast.LENGTH_SHORT).show();
+
+        view_accepted_matches_box.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DashboardActivity.this, AcceptedMatchRequest.class);
+                intent.putExtra("user_email",user_email);
+                intent.putExtra("user_id",user_id);
+                intent.putExtra("user_name" , user_name);
+                intent.putExtra("captain", captain);
+                intent.putExtra("team_id" , team_id);
+                startActivity(intent);
+            }
+        });
 
         add_team_box.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +170,31 @@ public class DashboardActivity extends AppCompatActivity  {
                 intent.putExtra("captain", captain);
                 startActivity(intent);
 //                finish();
+            }
+        });
+
+        view_team_requests_box.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DashboardActivity.this, TeamJoinRequests.class);
+                intent.putExtra("user_email",user_email);
+                intent.putExtra("user_id",user_id);
+                intent.putExtra("user_name" , user_name);
+                intent.putExtra("captain", captain);
+                intent.putExtra("team_id" , team_id);
+                startActivity(intent);
+            }
+        });
+        view_created_matches_box.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DashboardActivity.this, ShowCreatedPosts.class);
+                intent.putExtra("user_email",user_email);
+                intent.putExtra("user_id",user_id);
+                intent.putExtra("user_name" , user_name);
+                intent.putExtra("captain", captain);
+                intent.putExtra("team_id" , team_id);
+                startActivity(intent);
             }
         });
 
@@ -228,6 +280,19 @@ public class DashboardActivity extends AppCompatActivity  {
 ////                                    intent.putExtra("user_id",userMod.user_id);
 //                    startActivity(intent);
 //                    drawer.closeDrawers();
+                }
+                if(item.getTitle().equals("Search")){
+                    Intent intent = new Intent(DashboardActivity.this , UserSearch.class);
+                    intent.putExtra("user_email" , user_email);
+                    intent.putExtra("user_name", user_name);
+                    intent.putExtra("captain" , captain);
+                    intent.putExtra("user_id", user_id);
+                    intent.putExtra("user_dob", user_dob);
+                    intent.putExtra("user_phone" , user_phone);
+                    intent.putExtra("user_address" , user_address);
+                    intent.putExtra("team_id" , team_id);
+                    startActivity(intent);
+                    drawer.closeDrawers();
                 }
                 if(item.getTitle().equals("Individual Coach"))
                 {
@@ -380,6 +445,20 @@ public class DashboardActivity extends AppCompatActivity  {
 
 
         });
+
+    }
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && captain.matches("yes")) {
+
+            backPressDialog.logout(this);
+
+            //moveTaskToBack(false);
+
+            return true;
+        }
+//        else{
+            return super.onKeyDown(keyCode, event);
+//        }
 
     }
 

@@ -33,7 +33,13 @@ public class JoinTeam {
         this.user_id = user_id;
     }
 
+    public String getTeam_name() {
+        return team_name;
+    }
 
+    public void setTeam_name(String team_name) {
+        this.team_name = team_name;
+    }
 
     public String getUser_name() {
         return user_name;

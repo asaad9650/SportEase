@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/academy_item_layout"
+    android:padding="5dp"
+    android:orientation="vertical"
+    android:id="@+id/ll_requests"
+    >
+    <TextView
+        android:id="@+id/txt_match_id"
+        android:text="Match ID"
+        android:padding="2dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        android:id="@+id/ll_view_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View"
+            android:textAlignment="center"
+            android:padding="5dp"
+
+            android:textColor="#1E6FC6"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:textSize="20sp"
+            />
+
+         </LinearLayout>
+
+
+</LinearLayout>

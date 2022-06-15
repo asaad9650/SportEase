@@ -54,7 +54,7 @@ public class UserMyTeam extends AppCompatActivity {
         my_team_name.setVisibility(View.GONE);
         my_team__no_of_player.setVisibility(View.GONE);
         no_teams_added_yet.setVisibility(View.VISIBLE);
-        view_post_box.setVisibility(View.VISIBLE);
+        view_post_box.setVisibility(View.GONE);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -63,21 +63,21 @@ public class UserMyTeam extends AppCompatActivity {
         captain = extras.getString("captain");
         user_name = extras.getString("user_name");
 
-        view_post_box.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(UserMyTeam.this, UserShowPost.class);
-
-//                intent.putExtra("user_address",user.address );
-//                intent.putExtra("user_gender",user.gender);
-//                intent.putExtra("user_image",user.image);
-                intent.putExtra("user_id" , user_id);
-                intent.putExtra("user_email", user_email);
-                intent.putExtra("user_name",user_name);
-                intent.putExtra("captain", captain);
-                startActivity(intent);
-            }
-        });
+//        view_post_box.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(UserMyTeam.this, UserShowPost.class);
+//
+////                intent.putExtra("user_address",user.address );
+////                intent.putExtra("user_gender",user.gender);
+////                intent.putExtra("user_image",user.image);
+//                intent.putExtra("user_id" , user_id);
+//                intent.putExtra("user_email", user_email);
+//                intent.putExtra("user_name",user_name);
+//                intent.putExtra("captain", captain);
+//                startActivity(intent);
+//            }
+//        });
 
 
 

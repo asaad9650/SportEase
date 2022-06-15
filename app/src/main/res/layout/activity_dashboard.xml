@@ -181,7 +181,7 @@
                             android:layout_centerVertical="true"
                             android:padding="20dp"
 
-                            android:src="@drawable/team_logo"
+                            android:src="@drawable/team"
                             android:layout_marginBottom="10dp" />
 
                         <TextView
@@ -270,11 +270,116 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/view_team_requests_box"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_corners"
+                        app:layout_constraintBottom_toBottomOf="@+id/color_box"
+                        tools:ignore="MissingConstraints">
+
+
+                        <ImageView
+                            android:id="@+id/view_team_request"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_centerVertical="true"
+                            android:padding="20dp"
+                            android:src="@drawable/team_users"
+                            android:layout_marginBottom="10dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Team join requests"
+                            android:layout_margin="10dp"
+                            android:textAlignment="center"
+                            android:textSize="18sp"
+                            android:textColor="#fff"
+                            android:textStyle="bold"
+                            app:layout_constraintBaseline_toBottomOf="@id/view_team_request"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/view_created_matches_box"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_corners"
+                        app:layout_constraintBottom_toBottomOf="@+id/color_box"
+                        tools:ignore="MissingConstraints">
+
+
+                        <ImageView
+                            android:id="@+id/view_created_matches"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_centerVertical="true"
+                            android:padding="20dp"
+                            android:src="@drawable/match"
+                            android:layout_marginBottom="10dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Match Requests"
+                            android:layout_margin="10dp"
+                            android:textAlignment="center"
+                            android:textSize="18sp"
+                            android:textColor="#fff"
+                            android:textStyle="bold"
+                            app:layout_constraintBaseline_toBottomOf="@id/view_created_matches"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/view_accepted_matches_box"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_corners"
+                        app:layout_constraintBottom_toBottomOf="@+id/color_box"
+                        tools:ignore="MissingConstraints">
+
+
+                        <ImageView
+                            android:id="@+id/view_accepted_matches"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_centerVertical="true"
+                            android:padding="20dp"
+                            android:src="@drawable/cricket_outlined"
+                            android:layout_marginBottom="10dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Accepted Match Request"
+                            android:layout_margin="10dp"
+                            android:textAlignment="center"
+                            android:textSize="18sp"
+                            android:textColor="#fff"
+                            android:textStyle="bold"
+                            app:layout_constraintBaseline_toBottomOf="@id/view_accepted_matches"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
 
 
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             </ScrollView>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -47,6 +47,20 @@ public class UserEventHome extends AppCompatActivity {
             }
         });
 
+        post_invitations_box.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserEventHome.this , ShowCreatedPosts.class);
+                intent.putExtra("user_id", user_id);
+                intent.putExtra("user_name" , user_name);
+                intent.putExtra("user_email" , user_email);
+                intent.putExtra("team_id" , team_id);
+                startActivity(intent);
+
+
+            }
+        });
+
         invite_players_box.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

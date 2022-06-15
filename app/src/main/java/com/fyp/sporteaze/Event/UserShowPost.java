@@ -18,9 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fyp.sporteaze.BackPressDialog;
 import com.fyp.sporteaze.LoginActivity;
+import com.fyp.sporteaze.Model.CreateMatchBetweenTeams;
 import com.fyp.sporteaze.Model.Invitation;
 import com.fyp.sporteaze.Model.User;
 import com.fyp.sporteaze.R;
+import com.fyp.sporteaze.Search.UserSearch;
 import com.fyp.sporteaze.User.DashboardActivity;
 import com.fyp.sporteaze.User.IndividualCoachBooking;
 import com.fyp.sporteaze.User.UserChat;
@@ -29,6 +31,7 @@ import com.fyp.sporteaze.User.UserMyCoach;
 import com.fyp.sporteaze.User.UserShowAcademies;
 import com.fyp.sporteaze.User.UserUpdateProfile;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,9 +43,12 @@ import java.util.List;
 
 public class UserShowPost extends AppCompatActivity {
     List<Invitation> invitationList;
+    List<CreateMatchBetweenTeams> createMatchBetweenTeamsList;
     RecyclerView posts_recycler_view;
     UserShowPostAdapter userShowPostAdapter;
+
     DatabaseReference databaseReference;
+    DatabaseReference createdMatchReference;
     DatabaseReference root ;
 
     TextView no_new_post;
@@ -55,8 +61,8 @@ public class UserShowPost extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_show_post);
 
-        Intent intent = getIntent();
         no_new_post = findViewById(R.id.no_new_post);
+        Intent intent = getIntent();
 
 
 
@@ -76,41 +82,22 @@ public class UserShowPost extends AppCompatActivity {
         posts_recycler_view.setLayoutManager(new LinearLayoutManager(this));
 
         invitationList = new ArrayList<>();
+        createMatchBetweenTeamsList = new ArrayList<>();
 
         databaseReference = FirebaseDatabase.getInstance().getReference("invitations");
         root = FirebaseDatabase.getInstance().getReference();
 
-//        informationRef.child("Users").child(user_id).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                User user = snapshot.getValue(User.class);
-////                user_name = user.name;
-//                user_address = user.address;
-//                user_dob = user.dob;
-//                user_phone =user.phone;
-//
-//
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
+        createdMatchReference = FirebaseDatabase.getInstance().getReference("create_match_between_teams");
         if(team_id.matches("")){
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                Toast.makeText(AcademyViewInvoice.this, snapshot.toString() , Toast.LENGTH_SHORT).show();
                     for(DataSnapshot ds: snapshot.getChildren()){
 
-                        Toast.makeText(UserShowPost.this, ds.getValue().toString() , Toast.LENGTH_LONG).show();
                         Invitation us = ds.getValue(Invitation.class);
                         invitationList.add(us);
                     }
-                    userShowPostAdapter = new UserShowPostAdapter(invitationList  , user_id, user_name , user_email, user_phone , user_dob,user_address);
+                    userShowPostAdapter = new UserShowPostAdapter(invitationList, null  , user_id, user_name , user_email, user_phone , user_dob,user_address);
                     posts_recycler_view.setAdapter(userShowPostAdapter);
                     posts_recycler_view.setVisibility(View.VISIBLE);
                     no_new_post.setVisibility(View.GONE);
@@ -132,6 +119,43 @@ public class UserShowPost extends AppCompatActivity {
                 }
             });
 
+        }
+
+        else if (!team_id.matches("")){
+            createdMatchReference.orderByChild("status").equalTo("accepted").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot ds: snapshot.getChildren()){
+//                        if(ds.child("request_initiated_by").getValue(String.class).matches(team_id)) {
+//                        Toast.makeText(UserShowPost.this, "Team ID " + team_id, Toast.LENGTH_SHORT).show();
+                            CreateMatchBetweenTeams createMatchBetweenTeams = ds.getValue(CreateMatchBetweenTeams.class);
+                            if(createMatchBetweenTeams.getTeam_1().getTeam_id().matches(team_id) || createMatchBetweenTeams.getTeam_2().getTeam_id().matches(team_id)) {
+                                createMatchBetweenTeamsList.add(createMatchBetweenTeams);
+                            }
+//                        }
+                        userShowPostAdapter = new UserShowPostAdapter(null, createMatchBetweenTeamsList  , user_id, user_name , user_email, user_phone , user_dob,user_address);
+                        posts_recycler_view.setAdapter(userShowPostAdapter);
+                        posts_recycler_view.setVisibility(View.VISIBLE);
+                        no_new_post.setVisibility(View.GONE);
+                    }
+
+//                if (invoiceList.size()==0){
+//                    no_invoices.setVisibility(View.VISIBLE);
+//                    recyclerView.setVisibility(View.GONE);
+//                }
+//                else{
+//                    no_invoices.setVisibility(View.GONE);
+//                    recyclerView.setVisibility(View.VISIBLE);
+//                }
+//                academyHelperAdapter.notifyDataSetChanged();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         }
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.user_toolbar);
@@ -182,6 +206,21 @@ public class UserShowPost extends AppCompatActivity {
                     intent.putExtra("team_id" , team_id);
 
 //                                    intent.putExtra("user_id",userMod.user_id);
+                    startActivity(intent);
+                    drawer.closeDrawers();
+                }
+                if(item.getTitle().equals("Search")){
+//                    Toast.makeText(UserShowPost.this, "Search Clicked", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(UserShowPost.this , UserSearch.class);
+                    intent.putExtra("user_email" , user_email);
+                    intent.putExtra("user_name", user_name);
+                    intent.putExtra("captain" , captain);
+                    intent.putExtra("user_id", user_id);
+                    intent.putExtra("user_dob", user_dob);
+                    intent.putExtra("user_phone" , user_phone);
+                    intent.putExtra("user_address" , user_address);
+                    intent.putExtra("team_id" , team_id);
+
                     startActivity(intent);
                     drawer.closeDrawers();
                 }
@@ -339,7 +378,7 @@ public class UserShowPost extends AppCompatActivity {
 
     }
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
+        if (keyCode == KeyEvent.KEYCODE_BACK ) {
 
             backPressDialog.logout(this);
 
@@ -347,6 +386,7 @@ public class UserShowPost extends AppCompatActivity {
 
             return true;
         }
+
         return super.onKeyDown(keyCode, event);
     }
 }

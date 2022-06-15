@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fyp.sporteaze.Model.Match;
+import com.fyp.sporteaze.Model.Team;
 import com.fyp.sporteaze.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,6 +26,8 @@ public class UserCreateEvent extends AppCompatActivity {
     Button btn_create_event;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference reference = firebaseDatabase.getReference();
+    DatabaseReference teamReference = firebaseDatabase.getReference();
+    Team team;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,20 @@ public class UserCreateEvent extends AppCompatActivity {
             }
         });
 
+        teamReference.child("teams").child(team_id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                team = snapshot.getValue(Team.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
 
         btn_create_event.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,8 +88,8 @@ public class UserCreateEvent extends AppCompatActivity {
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
                     DatabaseReference root = db.getReference();
                     String event_key = root.push().getKey();
-                    Match match = new Match(event_key, et_create_match_team_name.getText().toString().trim(), et_create_match_ground_booked.getText().toString().trim(), et_create_match_winning_price.getText().toString().trim() , team_id);
-                    root.child("events").child(team_id).child(event_key).setValue(match);
+                    Match match = new Match(event_key, et_create_match_team_name.getText().toString().trim(), et_create_match_ground_booked.getText().toString().trim(), et_create_match_winning_price.getText().toString().trim() , team_id , team.email_1_captain , team.email_2_vice_captain , team.email_3, team.email_4, team.email_5, team.email_6, team.email_7,team.email_8, team.email_9,team.email_10, team.email_11 , "0" , "0" , "0");
+                    root.child("events").child(event_key).setValue(match);
                     Toast.makeText(UserCreateEvent.this, "Created Successfully!", Toast.LENGTH_SHORT).show();
                     String empty = "";
                     et_create_match_ground_booked.setText(empty);

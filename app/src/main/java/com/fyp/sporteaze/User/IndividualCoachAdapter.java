@@ -131,35 +131,6 @@ public class IndividualCoachAdapter extends RecyclerView.Adapter {
                     }
                 });
 
-
-//                btn_popup_coach_update.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        Intent intent = new Intent( view.getContext(), AcademyCoachUpdate.class);
-//                        intent.putExtra("coach_id", coaches.getCoach_id());
-//                        intent.putExtra("coach_name", coaches.getCoach_name());
-//                        intent.putExtra("coach_address", coaches.getCoach_address());
-//                        intent.putExtra("coach_age", coaches.getCoach_age());
-//                        intent.putExtra("coach_expertise", coaches.getCoach_expertise());
-//                        intent.putExtra("coach_charges",coaches.getCoach_charges());
-//                        intent.putExtra("coach_phone", coaches.getCoach_phone());
-//                        intent.putExtra("coach_image", coaches.getCoach_image());
-//                        view.getContext().startActivity(intent);
-//                        ((Activity)view.getContext()).finish();
-//
-//                    }
-//                });
-
-//                btn_popup_coach_delete.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        AlertDialog diaBox = AskOption(view.getRootView().getContext() , coaches.getCoach_id() );
-//                        diaBox.show();
-//                    }
-//                });
-
-//                Glide.with(view.getContext()).load(users.academy_image).into(img_academy_view_details_image);
-
                 builder.setView(dialogView);
                 builder.setCancelable(true);
                 builder.show();

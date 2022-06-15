@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/whiteVar"
+    android:paddingBottom="5dp"
+    >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ll_created_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="15dp"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_popup_team_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Team Name"
+            android:layout_margin="5dp"
+            android:textColor="#000"
+            android:textSize="14sp"
+            />
+
+        <TextView
+            android:id="@+id/txt_popup_ground_booked"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="5dp"
+            android:textColor="#000"
+            android:text="Ground Booked"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/txt_popup_winning_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Winning Price"
+            android:layout_margin="5dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:id="@+id/txt_popup_captain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Captain: "
+            android:layout_margin="5dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+
+            />
+        <TextView
+            android:id="@+id/txt_popup_other_players"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Other Players"
+            android:layout_margin="5dp"
+            android:textSize="16sp"
+            android:textColor="#000"
+            />
+        <TextView
+            android:id="@+id/txt_popup_matches_played"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total Matches Played:"
+            android:layout_margin="5dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+
+            />
+        <TextView
+            android:id="@+id/txt_popup_matches_won"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Matches Won"
+            android:layout_margin="5dp"
+            android:textSize="16sp"
+            android:textColor="#000"
+            />
+        <TextView
+            android:id="@+id/txt_popup_matches_lost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Matches Lost"
+            android:layout_margin="5dp"
+            android:textSize="16sp"
+            android:textColor="#000"
+            />
+
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_popup_delete_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_round"
+                android:text="Delete"
+                android:layout_margin="10dp"
+                android:textColor="#fff"
+                android:visibility="gone"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:visibility="gone"
+                android:id="@+id/btn_popup_request_match"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_round"
+                android:text="Request match"
+                android:padding="5dp"
+                android:layout_margin="10dp"
+                android:textColor="#fff"
+                />
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

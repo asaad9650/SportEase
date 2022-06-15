@@ -53,6 +53,13 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/action_bar_search"
+        android:orderInCategory="100"
+        android:title="Search"
+        android:icon="@drawable/ic_outline_search_24"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/action_logout"
         android:orderInCategory="100"
         android:title="Logout"
