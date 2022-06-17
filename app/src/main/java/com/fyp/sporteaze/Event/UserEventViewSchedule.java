@@ -51,7 +51,12 @@ public class UserEventViewSchedule extends AppCompatActivity {
         view_upcoming_matches.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(UserEventViewSchedule.this , UserEventViewUpcomingMatches.class);
+                intent.putExtra("user_id", user_id);
+                intent.putExtra("user_name" , user_name);
+                intent.putExtra("user_email" , user_email);
+                intent.putExtra("team_id" , team_id);
+                startActivity(intent);
             }
         });
 

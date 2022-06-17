@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sporteaze">
         <activity
+            android:name=".Event.UserEventViewUpcomingMatches"
+            android:exported="false" />
+        <activity
             android:name=".Event.AcceptedMatchRequest"
             android:exported="false" />
         <activity

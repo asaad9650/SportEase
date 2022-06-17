@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_round"
         android:textColor="#fff"
-        android:text="Apply"
+        android:text="Search"
         />
 
 </LinearLayout>

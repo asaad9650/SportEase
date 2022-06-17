@@ -8,25 +8,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fyp.sporteaze.Model.CoachBooking;
+import com.fyp.sporteaze.Model.CreateMatchBetweenTeams;
 import com.fyp.sporteaze.Model.GroundBooking;
+import com.fyp.sporteaze.Model.Team;
+import com.fyp.sporteaze.Model.TeamGroundBooking;
 import com.fyp.sporteaze.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
 public class GroundRentAdapter extends RecyclerView.Adapter {
 
-    List<GroundBooking> groundBookingList;
-
-
-    public GroundRentAdapter(List<GroundBooking> groundBookingList) {
+    List<TeamGroundBooking> groundBookingList;
+    DatabaseReference update_date_reference = FirebaseDatabase.getInstance().getReference();
+    String team_id1;
+    String team_id2;
+    String create_match_key;
+    public GroundRentAdapter(List<TeamGroundBooking> groundBookingList) {
         this.groundBookingList = groundBookingList;
     }
 
@@ -46,7 +55,7 @@ public class GroundRentAdapter extends RecyclerView.Adapter {
         ViewHolderClass viewHolderClass = (ViewHolderClass)holder;
 
 
-        GroundBooking groundBooking = groundBookingList.get(position);
+        TeamGroundBooking groundBooking = groundBookingList.get(position);
         SpannableString content = new SpannableString("Details");
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
         viewHolderClass.recycler_ground_booking_date_and_time.setText(groundBooking.getGround_name().toString());
@@ -67,53 +76,55 @@ public class GroundRentAdapter extends RecyclerView.Adapter {
                 AppCompatButton btn_popup_coach_request_close = dialogView.findViewById(R.id.btn_popup_coach_request_close);
                 btn_popup_coach_request_close.setVisibility(View.GONE);
 
-                txt_ground_request_by.setText("From: " + groundBooking.getBooked_by_id());
-                txt_ground_request_purpose.setText("Purpose: "+groundBooking.getGround_booking_purpose());
+                txt_ground_request_by.setText("From: " + groundBooking.getTeam_name());
+                txt_ground_request_purpose.setText("Date: "+groundBooking.getGround_date());
                 txt_ground_request_timings.setText("Timings: "+groundBooking.getGround_timings());
-                txt_ground_request_ground_charges.setText("Charges: "+groundBooking.getGround_charges());
-//                Button button = builder.getB(DialogInterface.BUTTON_POSITIVE);
-//                btn_popup_coach_request_close.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-//                            @Override
-//                            public void onCancel(DialogInterface dialogInterface) {
-//                                dialogInterface.dismiss();
-//                            }
-//                        });
-//                    }
-//                });
-
-//                builder.setNeutralButton("Close", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        dialogInterface.dismiss();
-//                    }
-//                });
-
-
-//                btn_popup_coach_request_close.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        builder.
-//
-//                    }
-//                });
-
-
+                txt_ground_request_ground_charges.setText("Charges: "+groundBooking.getGround_name());
                 builder.setView(dialogView);
                 builder.setCancelable(true);
                 builder.show();
 
             }
         });
+
+
         viewHolderClass.btn_accept_ground_booking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-                databaseReference.child("ground_bookings").child(groundBooking.getGround_booking_id()).child("ground_request_status").setValue("accepted");
+                databaseReference.child("team_ground_bookings").child(groundBooking.getBooking_id()).child("request_status").setValue("accepted");
                 groundBookingList.remove(holder.getAbsoluteAdapterPosition());
                 notifyDataSetChanged();
+                update_date_reference.child("create_match_between_teams").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            CreateMatchBetweenTeams createMatchBetweenTeams = ds.getValue(CreateMatchBetweenTeams.class);
+                            team_id1 = createMatchBetweenTeams.getTeam_1().getTeam_id();
+                            team_id2 = createMatchBetweenTeams.getTeam_2().getTeam_id();
+//                            create_match_key = ds.getKey();
+                            if (team_id1.matches(groundBooking.getTeam_id()) || team_id2.matches(groundBooking.getTeam_id())) {
+                                Toast.makeText(view.getContext(), ds.getKey(), Toast.LENGTH_SHORT).show();
+                                update_date_reference.child("create_match_between_teams").child(ds.getKey()).child("match_date").setValue(groundBooking.getGround_date());
+                                update_date_reference.child("create_match_between_teams").child(ds.getKey()).child("match_venue").setValue(groundBooking.getGround_name() + " " + groundBooking.getGround_location());
+                                break;
+                            }
+                        }
+//                        if (team_id1.matches(groundBooking.getTeam_id())){
+//                            Toast.makeText(view.getContext(), "Pehli match", Toast.LENGTH_SHORT).show();
+//                        }
+//                        else if(team_id2.matches(groundBooking.getTeam_id())){
+//                            Toast.makeText(view.getContext(), "Dusri match", Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                        Toast.makeText(view.getContext(), snapshot.toString(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
 
@@ -121,9 +132,13 @@ public class GroundRentAdapter extends RecyclerView.Adapter {
             @Override
             public void onClick(View view) {
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-                databaseReference.child("ground_bookings").child(groundBooking.getGround_booking_id()).child("ground_request_status").setValue("rejected");
+                databaseReference.child("team_ground_bookings").child(groundBooking.getBooking_id()).child("request_status").setValue("rejected");
                 groundBookingList.remove(holder.getAbsoluteAdapterPosition());
                 notifyDataSetChanged();
+//                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+//                databaseReference.child("ground_bookings").child(groundBooking.getGround_booking_id()).child("ground_request_status").setValue("rejected");
+//                groundBookingList.remove(holder.getAbsoluteAdapterPosition());
+//                notifyDataSetChanged();
             }
         });
     }

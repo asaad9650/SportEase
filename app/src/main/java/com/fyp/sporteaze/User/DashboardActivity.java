@@ -81,9 +81,11 @@ public class DashboardActivity extends AppCompatActivity  {
                 DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
 
                 Intent intent= new Intent(DashboardActivity.this, UsersBookings.class);
-                intent.putExtra("user_id", user_id);
+                intent.putExtra("user_email",user_email);
+                intent.putExtra("user_id",user_id);
                 intent.putExtra("user_name" , user_name);
-                intent.putExtra("user_email" , user_email);
+                intent.putExtra("captain", captain);
+                intent.putExtra("team_id" , team_id);
                 startActivity(intent);
 
 

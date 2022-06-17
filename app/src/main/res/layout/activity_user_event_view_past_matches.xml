@@ -45,19 +45,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Clear all"
-            android:textAlignment="textEnd"
-            android:padding="10dp"
-            android:layout_marginRight="5dp"
-            android:textColor="#1E6FC6"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

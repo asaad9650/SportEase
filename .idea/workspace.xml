@@ -14,30 +14,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d50149d-db58-480f-bd52-61047ee126a8" name="Changes" comment="15_June_2022">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/AcceptedMatchRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/AcceptedMatchRequestAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/ShowCreatedPostAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/ShowCreatedPosts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Model/CreateMatchBetweenTeams.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Search/UserSearch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Search/UserSearchAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/TeamJoinRequestAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/TeamJoinRequests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/accepted_match_requests.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/cricket_outlined.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_outline_filter_alt_24.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_outline_search_24.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/team_users.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/accepted_match_request_layout_file.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_accepted_match_request.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_show_created_posts.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_team_join_requests.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_user_search.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/created_post_layout_file.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/created_post_popup.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/search_filter_popup.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/search_layout_file.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/team_join_request_layout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Model/TeamGroundBooking.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/fileHashes/fileHashes.bin" afterDir="false" />
@@ -49,30 +26,37 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/UserCreateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/UserCreateEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/UserEventHome.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/UserEventHome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/UserShowPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/UserShowPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/UserShowPostAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/UserShowPostAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Model/JoinTeam.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Model/JoinTeam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Model/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Model/Match.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Academy/RentRequest/GroundRentAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Academy/RentRequest/GroundRentAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Academy/RentRequest/GroundRentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Academy/RentRequest/GroundRentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/AcceptedMatchRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/AcceptedMatchRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/ShowCreatedPosts.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/ShowCreatedPosts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/UserEventViewSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Event/UserEventViewSchedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Search/UserSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Search/UserSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Teams/TeamRentCoach.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Teams/TeamRentCoach.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Teams/TeamRentGround.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Teams/TeamRentGround.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/DashboardActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/DashboardActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/IndividualCoachAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/IndividualCoachAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/UserMyTeam.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/UserMyTeam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/TeamJoinRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/TeamJoinRequests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/UserGroundAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/UserGroundAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/UserViewCoach.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/UserViewCoach.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/UserViewGrounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/UserViewGrounds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/UsersBookings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/User/UsersBookings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/accepted_match_requests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/accepted_match_requests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/cricket_outlined.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/cricket_outlined.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_outline_filter_alt_24.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_outline_filter_alt_24.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_outline_search_24.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_outline_search_24.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/team_users.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/team_users.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_accepted_match_request.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_accepted_match_request.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/post_layout_file.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/post_layout_file.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/user_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/user_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_show_created_posts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_show_created_posts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_team_join_requests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_team_join_requests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_team_rent_ground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_team_rent_ground.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_user_event_view_past_matches.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_user_event_view_past_matches.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_user_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_user_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/search_filter_popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/search_filter_popup.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,8 +72,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>

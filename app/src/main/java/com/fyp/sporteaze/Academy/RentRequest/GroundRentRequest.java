@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.fyp.sporteaze.Model.CoachBooking;
 import com.fyp.sporteaze.Model.GroundBooking;
+import com.fyp.sporteaze.Model.Team;
+import com.fyp.sporteaze.Model.TeamGroundBooking;
 import com.fyp.sporteaze.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GroundRentRequest extends AppCompatActivity {
-    List<GroundBooking> groundRentList;
+    List<TeamGroundBooking> groundRentList;
     RecyclerView recyclerView;
     GroundRentAdapter groundRentAdapter;
     DatabaseReference databaseReference;
@@ -49,7 +51,7 @@ public class GroundRentRequest extends AppCompatActivity {
         academy_name = extras.getString("academy_name");
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("ground_bookings");
+        databaseReference = FirebaseDatabase.getInstance().getReference("team_ground_bookings");
 
 
 
@@ -60,8 +62,8 @@ public class GroundRentRequest extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot2) {
 
                 for (DataSnapshot dataSnapshot : snapshot2.getChildren()) {
-                    GroundBooking us = dataSnapshot.getValue(GroundBooking.class);
-                    if(us.getGround_request_status().matches("pending")) {
+                    TeamGroundBooking us = dataSnapshot.getValue(TeamGroundBooking.class);
+                    if(us.getRequest_status().matches("pending")) {
                         groundRentList.add(us);
                         recyclerView.setVisibility(View.VISIBLE);
                         text_no_ground_request.setVisibility(View.GONE);

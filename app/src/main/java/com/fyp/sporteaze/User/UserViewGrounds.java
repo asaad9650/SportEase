@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.fyp.sporteaze.Academy.Ground.ViewGroundAdapter;
 import com.fyp.sporteaze.Model.Ground;
@@ -23,7 +24,7 @@ import java.util.List;
 public class UserViewGrounds extends AppCompatActivity {
 
     List<Ground> groundList;
-    String user_id, user_name, user_email;
+    String user_id, user_name, user_email , captain , team_id;
     RecyclerView grounds_recycler_view;
     UserGroundAdapter viewGroundAdapter;
     DatabaseReference databaseReference;
@@ -44,6 +45,9 @@ public class UserViewGrounds extends AppCompatActivity {
         user_id = extras.getString("user_id");
         user_name = extras.getString("user_name");
         user_email = extras.getString("user_email");
+        captain = extras.getString("captain");
+        team_id = extras.getString("team_id");
+
 
         databaseReference = FirebaseDatabase.getInstance().getReference("grounds");
 
@@ -54,12 +58,9 @@ public class UserViewGrounds extends AppCompatActivity {
                     Ground us = ds.getValue(Ground.class);
                     groundList.add(us);
                 }
-                viewGroundAdapter = new UserGroundAdapter(groundList , user_id , user_name, user_email);
+                viewGroundAdapter = new UserGroundAdapter(groundList , user_id , user_name, user_email , captain , team_id);
                 grounds_recycler_view.setAdapter(viewGroundAdapter);
-                //academyHelperAdapter.notifyDataSetChanged();
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

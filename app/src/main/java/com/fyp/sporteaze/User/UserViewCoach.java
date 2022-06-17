@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.fyp.sporteaze.Model.Coach;
 import com.fyp.sporteaze.Model.Ground;
@@ -22,7 +23,7 @@ import java.util.List;
 
 public class UserViewCoach extends AppCompatActivity {
 
-    String user_id , user_name, user_email;
+    String user_id , user_name, user_email , captain , team_id;
 
     List<Coach> coachList;
     RecyclerView coaches_recycler_view;
@@ -40,6 +41,8 @@ public class UserViewCoach extends AppCompatActivity {
         user_id = extras.getString("user_id");
         user_email = extras.getString("user_email");
         user_name = extras.getString("user_name");
+        captain = extras.getString("captain");
+        team_id = extras.getString("team_id");
 
 
         coaches_recycler_view = findViewById(R.id.view_coaches_recycler_view);
@@ -57,8 +60,6 @@ public class UserViewCoach extends AppCompatActivity {
                 }
                 userCoachAdapter = new UserCoachAdapter(coachList , user_id , user_name, user_email);
                 coaches_recycler_view.setAdapter(userCoachAdapter);
-                //academyHelperAdapter.notifyDataSetChanged();
-
             }
 
             @Override
