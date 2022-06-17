@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".Event.UserEventViewUpcomingMatches">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/color_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/color_round"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:padding="20dp"
+                android:src="@drawable/schedule"
+                android:layout_marginBottom="10dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upcoming Matches"
+                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:textAlignment="center"
+                android:textSize="19sp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBottomOf="@id/logo"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All Matches"
+            android:textAlignment="textStart"
+            android:padding="5dp"
+            android:textColor="#1E6FC6"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:background="#FDD835"
+            android:textSize="18sp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:padding="0dp"
+            android:id="@+id/recycler_upcoming_matches"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="MissingConstraints" />
+
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

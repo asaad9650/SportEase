@@ -13,7 +13,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0d50149d-db58-480f-bd52-61047ee126a8" name="Changes" comment="15_June_2022">
+    <list default="true" id="0d50149d-db58-480f-bd52-61047ee126a8" name="Changes" comment="18_June_2022&#10;Completed upcoming matches screens&#10;Past matches screen and validations are remaining now.">
       <change afterPath="$PROJECT_DIR$/app/src/main/java/com/fyp/sporteaze/Model/TeamGroundBooking.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.lock" afterDir="false" />
@@ -63,7 +63,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[R58R30W0DDA]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -186,6 +186,14 @@
       <option name="presentableId" value="Default" />
       <updated>1654797264489</updated>
     </task>
+    <task id="LOCAL-00001" summary="18_June_2022&#10;Completed upcoming matches screens&#10;Past matches screen and validations are remaining now.">
+      <created>1655501243506</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655501243506</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -202,7 +210,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="15_June_2022" />
-    <option name="LAST_COMMIT_MESSAGE" value="15_June_2022" />
+    <MESSAGE value="18_June_2022&#10;Completed upcoming matches screens&#10;Past matches screen and validations are remaining now." />
+    <option name="LAST_COMMIT_MESSAGE" value="18_June_2022&#10;Completed upcoming matches screens&#10;Past matches screen and validations are remaining now." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
