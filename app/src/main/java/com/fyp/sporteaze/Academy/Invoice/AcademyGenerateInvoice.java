@@ -173,7 +173,7 @@ public class AcademyGenerateInvoice extends AppCompatActivity {
                 String mailFrom = "coffeeline9@gmail.com";
                 String password = "dwcqckylgqngqoxr";
 
-                String mailTo = "fypsporteaze@gmail.com";
+                String mailTo = academy_email;
                 String subject = "Invoice";
                 String message = "";
                 String attachFiles =filePath.toString();
@@ -198,8 +198,6 @@ public class AcademyGenerateInvoice extends AppCompatActivity {
         int SDK_INT = android.os.Build.VERSION.SDK_INT;
         if (SDK_INT > 8)
         {
-            pgsBar.setVisibility(view.VISIBLE);
-            btn_generate_invoice.setVisibility(view.GONE);
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                     .permitAll().build();
             StrictMode.setThreadPolicy(policy);

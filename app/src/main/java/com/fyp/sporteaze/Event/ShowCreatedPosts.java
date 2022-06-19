@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.view.contentcapture.DataShareWriteAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,13 +31,14 @@ public class ShowCreatedPosts extends AppCompatActivity {
     DatabaseReference databaseReference;
     DatabaseReference root ;
     TextView no_new_post;
-    String user_name, user_email, user_id , captain , team_id ,user_phone, user_address , user_dob;
-
+    String user_name, user_email, user_id , captain , team_id ,user_phone, user_address , user_dob, posts;
+    TextView heading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_created_posts);
         post_invitations_recycler_view = findViewById(R.id.post_invitations_recycler_view);
+        heading = findViewById(R.id.heading);
         Intent intent = getIntent();
 
 
@@ -50,26 +52,53 @@ public class ShowCreatedPosts extends AppCompatActivity {
         user_phone = extras.getString("user_phone");
         user_address = extras.getString("user_address");
         user_dob = extras.getString("user_dob");
+        posts = extras.getString("posts");
         post_invitations_recycler_view.setLayoutManager(new LinearLayoutManager(this));
         matchList = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("events").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Match match = dataSnapshot.getValue(Match.class);
-                    matchList.add(match);
-                    showCreatedPostAdapter  = new ShowCreatedPostAdapter(matchList , dataSnapshot.getKey() , team_id);
-                    post_invitations_recycler_view.setAdapter(showCreatedPostAdapter);
-//                    Toast.makeText(ShowCreatedPosts.this, dataSnapshot.getKey(), Toast.LENGTH_SHORT).show();
-
+        if (posts.matches("po")){
+            heading.setText("Matches");
+        }
+        else {
+            heading.setText("Post Invitations");
+        }
+        if (posts.matches("po")){
+            databaseReference.child("events").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        Match match = dataSnapshot.getValue(Match.class);
+                            if (!team_id.matches(match.getTeam_id())) {
+                                matchList.add(match);
+                                showCreatedPostAdapter = new ShowCreatedPostAdapter(matchList, dataSnapshot.getKey(), team_id);
+                                post_invitations_recycler_view.setAdapter(showCreatedPostAdapter);
+                            }
+                    }
                 }
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        }
+        if (posts.matches("posts")){
+            databaseReference.child("events").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        Match match = dataSnapshot.getValue(Match.class);
+                        if (team_id.matches(match.getTeam_id())) {
+                            matchList.add(match);
+                            showCreatedPostAdapter = new ShowCreatedPostAdapter(matchList, dataSnapshot.getKey(), team_id);
+                            post_invitations_recycler_view.setAdapter(showCreatedPostAdapter);
+                        }
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+        }
 
-            }
-        });
     }
 }

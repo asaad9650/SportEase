@@ -106,35 +106,22 @@ public class ShowCreatedPostAdapter extends RecyclerView.Adapter {
                                 String match_key  = create_match_ref.push().getKey();
                                 CreateMatchBetweenTeams createMatchBetweenTeams = new CreateMatchBetweenTeams(match_key,match.getTeam_id(),match  , match1 , "" , "" , "pending");
                                 create_match_ref.child("create_match_between_teams").child(match_key).setValue(createMatchBetweenTeams);
-//                                matchList1.add(match1);
-//                                Toast.makeText(view.getContext(), match.getEmail_1_captain() + " " + match1.getEmail_1_captain(), Toast.LENGTH_SHORT).show();
                             }
-
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
-
                             }
                         });
                         Toast.makeText(view.getContext(), "Requested for a match successfully", Toast.LENGTH_SHORT).show();
-
-//                        Match match1 =
                     }
                 });
-
-
                 btn_popup_delete_post.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-//                        alertDialog.dismiss();
-
                         Toast.makeText(view.getContext(), "Deleted Successfully!", Toast.LENGTH_SHORT).show();
-//                        ll_created_post.setVisibility(View.GONE);
                         viewHolderClass.ll_requests.setVisibility(View.GONE);
-//                        builder.cancel();
                         databaseReference.child("events").child(key).removeValue();
                     }
                 });
-
                 builder.setView(dialogView);
                 builder.setCancelable(true);
                 builder.show();

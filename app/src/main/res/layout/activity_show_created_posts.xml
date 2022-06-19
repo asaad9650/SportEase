@@ -30,9 +30,10 @@
                 android:src="@drawable/invitation_icon"
                 android:layout_marginBottom="10dp" />
             <TextView
+                android:id="@+id/heading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Post Invitations"
+                android:text=""
                 android:layout_margin="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"

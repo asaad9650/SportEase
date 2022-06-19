@@ -55,6 +55,7 @@ public class UserEventHome extends AppCompatActivity {
                 intent.putExtra("user_name" , user_name);
                 intent.putExtra("user_email" , user_email);
                 intent.putExtra("team_id" , team_id);
+                intent.putExtra("posts" , "posts");
                 startActivity(intent);
 
 

@@ -126,9 +126,8 @@ public class UserShowPostAdapter  extends RecyclerView.Adapter {
                 viewHolderClass.post_remaining_space.setText(Html.fromHtml("<b>Date : </b> " +  createMatchBetweenTeams.getMatch_date()));
 
             }
-//            team_name = createMatchBetweenTeams.getRequest_initiated_by();
-            viewHolderClass.post_submit_btn.setVisibility(View.GONE);
-
+//            viewHolderClass.post_submit_btn.setText("Request");
+//            viewHolderClass.post_submit_btn.setVisibility(View.VISIBLE);
 
         }
     }

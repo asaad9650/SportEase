@@ -198,6 +198,7 @@ public class DashboardActivity extends AppCompatActivity  {
                 intent.putExtra("user_name" , user_name);
                 intent.putExtra("captain", captain);
                 intent.putExtra("team_id" , team_id);
+                intent.putExtra("posts" , "po");
                 startActivity(intent);
             }
         });
