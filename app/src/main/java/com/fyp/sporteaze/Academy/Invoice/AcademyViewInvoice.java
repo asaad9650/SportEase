@@ -46,7 +46,6 @@ public class AcademyViewInvoice extends AppCompatActivity {
         academy_id = extras.getString("academy_id");
         academy_name = extras.getString("academy_name");
         databaseReference = FirebaseDatabase.getInstance().getReference("Invoices");
-//        if (invoiceList.size()==0){
             no_invoices.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
 
@@ -55,9 +54,7 @@ public class AcademyViewInvoice extends AppCompatActivity {
         databaseReference.child(academy_id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                Toast.makeText(AcademyViewInvoice.this, snapshot.toString() , Toast.LENGTH_SHORT).show();
                 for(DataSnapshot ds: snapshot.getChildren()){
-                    Toast.makeText(AcademyViewInvoice.this, ds.getValue().toString() , Toast.LENGTH_LONG).show();
                     Invoice us = ds.getValue(Invoice.class);
                     invoiceList.add(us);
                 }
@@ -71,7 +68,6 @@ public class AcademyViewInvoice extends AppCompatActivity {
                     no_invoices.setVisibility(View.GONE);
                     recyclerView.setVisibility(View.VISIBLE);
                 }
-                //academyHelperAdapter.notifyDataSetChanged();
 
             }
 

@@ -35,7 +35,7 @@ public class UserMyTeam extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference ref = firebaseDatabase.getReference();
     DatabaseReference teamRef = firebaseDatabase.getReference();
-    String user_id, user_email , user_name, captain;
+    String user_id, user_email , user_name, captain , team_id;
     String team_key;
     DatabaseReference acceptRef  = firebaseDatabase.getReference();
 
@@ -58,10 +58,12 @@ public class UserMyTeam extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        user_id = extras.getString("user_id");
-        user_email = extras.getString("user_email");
-        captain = extras.getString("captain");
+
         user_name = extras.getString("user_name");
+        user_email = extras.getString("user_email");
+        user_id = extras.getString("user_id");
+        captain = extras.getString("captain");
+        team_id = extras.getString("team_id");
 
 //        view_post_box.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -94,48 +96,107 @@ public class UserMyTeam extends AppCompatActivity {
         btn_view_my_team.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
+                View dialogView = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.team_popup, null);
+                TextView team_name = dialogView.findViewById(R.id.team_name);
+                TextView email1 = dialogView.findViewById(R.id.email1);
+                TextView email2 = dialogView.findViewById(R.id.email2);
+                TextView email3 = dialogView.findViewById(R.id.email3);
+                TextView email4 = dialogView.findViewById(R.id.email4);
+                TextView email5 = dialogView.findViewById(R.id.email5);
+                TextView email6 = dialogView.findViewById(R.id.email6);
+                TextView email7 = dialogView.findViewById(R.id.email7);
+                TextView email8 = dialogView.findViewById(R.id.email8);
+                TextView email9 = dialogView.findViewById(R.id.email9);
+                TextView email10 = dialogView.findViewById(R.id.email10);
+                TextView email11 = dialogView.findViewById(R.id.email11);
+
+
+                TextView email11_status = dialogView.findViewById(R.id.email11_status);
+                TextView email10_status = dialogView.findViewById(R.id.email10_status);
+                TextView email9_status = dialogView.findViewById(R.id.email9_status);
+                TextView email8_status = dialogView.findViewById(R.id.email8_status);
+                TextView email7_status = dialogView.findViewById(R.id.email7_status);
+                TextView email6_status = dialogView.findViewById(R.id.email6_status);
+                TextView email5_status = dialogView.findViewById(R.id.email5_status);
+                TextView email4_status = dialogView.findViewById(R.id.email4_status);
+                TextView email3_status = dialogView.findViewById(R.id.email3_status);
+                TextView email2_status = dialogView.findViewById(R.id.email2_status);
+                TextView email1_status = dialogView.findViewById(R.id.email1_status);
+                DatabaseReference status_ref = FirebaseDatabase.getInstance().getReference();
+
+                AppCompatButton btn_leave = dialogView.findViewById(R.id.btn_leave);
+                AppCompatButton btn_update  = dialogView.findViewById(R.id.btn_update);
+                btn_update.setVisibility(View.GONE);
+                if(captain.matches("yes")){
+                    btn_update.setVisibility(View.VISIBLE);
+                }
+
+                btn_update.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(team_key!=null ) {
+                            Toast.makeText(UserMyTeam.this, team_key, Toast.LENGTH_SHORT).show();
+
+                            DatabaseReference team_info_reference = FirebaseDatabase.getInstance().getReference();
+                            team_info_reference.child("teams").child(team_key).addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    Team team_infoo = snapshot.getValue(Team.class);
+
+                                    Intent inte = new Intent(UserMyTeam.this, UserUpdateTeam.class);
+                                    inte.putExtra( "captain_email" , team_infoo.getEmail_1_captain());
+                                    inte.putExtra( "vice_captain_email" , team_infoo.getEmail_2_vice_captain());
+                                    inte.putExtra( "email_3",team_infoo.getEmail_3());
+                                    inte.putExtra( "email_4" , team_infoo.getEmail_4());
+                                    inte.putExtra( "email_5",team_infoo.getEmail_5());
+                                    inte.putExtra( "email_6" , team_infoo.getEmail_6());
+                                    inte.putExtra( "email_7",team_infoo.getEmail_7());
+                                    inte.putExtra( "email_8" , team_infoo.getEmail_8());
+                                    inte.putExtra( "email_9",team_infoo.getEmail_9());
+                                    inte.putExtra( "email_10" , team_infoo.getEmail_10());
+                                    inte.putExtra( "email_11",team_infoo.getEmail_11());
+                                    inte.putExtra( "team_id" ,team_infoo.team_id);
+                                    inte.putExtra( "team_name",team_infoo.team_name);
+                                    inte.putExtra("user_id" ,user_id);
+                                    inte.putExtra("user_name",user_name);
+                                    inte.putExtra("user_email",user_email);
+                                    startActivity(inte);
+                                    finish();
+
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                        }
+                    }
+                });
+                btn_leave.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AskOption(view.getRootView().getContext() , team_id , user_email , user_id );
+                        Intent intent = new Intent(UserMyTeam.this , DashboardActivity.class);
+                    }
+                });
+
+
+
+
+
                 if(team_key!=null) {
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-                    reference.child("teams").child(team_key).addValueEventListener(new ValueEventListener() {
+                    reference.child("teams").child(team_key).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                          Team team = snapshot.getValue(Team.class);
-                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
-                            View dialogView = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.team_popup, null);
-                            TextView team_name = dialogView.findViewById(R.id.team_name);
-                            TextView email1 = dialogView.findViewById(R.id.email1);
-                            TextView email2 = dialogView.findViewById(R.id.email2);
-                            TextView email3 = dialogView.findViewById(R.id.email3);
-                            TextView email4 = dialogView.findViewById(R.id.email4);
-                            TextView email5 = dialogView.findViewById(R.id.email5);
-                            TextView email6 = dialogView.findViewById(R.id.email6);
-                            TextView email7 = dialogView.findViewById(R.id.email7);
-                            TextView email8 = dialogView.findViewById(R.id.email8);
-                            TextView email9 = dialogView.findViewById(R.id.email9);
-                            TextView email10 = dialogView.findViewById(R.id.email10);
-                            TextView email11 = dialogView.findViewById(R.id.email11);
-
-
-                            TextView email11_status = dialogView.findViewById(R.id.email11_status);
-                            TextView email10_status = dialogView.findViewById(R.id.email10_status);
-                            TextView email9_status = dialogView.findViewById(R.id.email9_status);
-                            TextView email8_status = dialogView.findViewById(R.id.email8_status);
-                            TextView email7_status = dialogView.findViewById(R.id.email7_status);
-                            TextView email6_status = dialogView.findViewById(R.id.email6_status);
-                            TextView email5_status = dialogView.findViewById(R.id.email5_status);
-                            TextView email4_status = dialogView.findViewById(R.id.email4_status);
-                            TextView email3_status = dialogView.findViewById(R.id.email3_status);
-                            TextView email2_status = dialogView.findViewById(R.id.email2_status);
-                            TextView email1_status = dialogView.findViewById(R.id.email1_status);
-                            DatabaseReference status_ref = FirebaseDatabase.getInstance().getReference();
-
-
                             status_ref.child("Users").orderByChild("email").equalTo(team.email_1_captain).addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     for(DataSnapshot snapshot1: snapshot.getChildren()){
                                         String status = (String) snapshot1.child(team_key).child("status").getValue();
-                                            email1_status.setText(status);
+                                        email1_status.setText(status);
                                     }
                                 }
 
@@ -144,7 +205,6 @@ public class UserMyTeam extends AppCompatActivity {
 
                                 }
                             });
-
                             status_ref.child("Users").orderByChild("email").equalTo(team.email_2_vice_captain).addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -354,64 +414,6 @@ public class UserMyTeam extends AppCompatActivity {
 
 
 
-                            AppCompatButton btn_leave = dialogView.findViewById(R.id.btn_leave);
-                            AppCompatButton btn_update  = dialogView.findViewById(R.id.btn_update);
-                            btn_update.setVisibility(View.GONE);
-                            if(captain.matches("yes")){
-                                btn_update.setVisibility(View.VISIBLE);
-                            }
-
-                            btn_update.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    if(team_key!=null ) {
-                                        Toast.makeText(UserMyTeam.this, team_key, Toast.LENGTH_SHORT).show();
-
-                                        DatabaseReference team_info_reference = FirebaseDatabase.getInstance().getReference();
-                                        team_info_reference.child("teams").child(team_key).addValueEventListener(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                Team team_infoo = snapshot.getValue(Team.class);
-
-                                                Intent inte = new Intent(UserMyTeam.this, UserUpdateTeam.class);
-                                                inte.putExtra( "captain_email" , team_infoo.getEmail_1_captain());
-                                                inte.putExtra( "vice_captain_email" , team_infoo.getEmail_2_vice_captain());
-                                                inte.putExtra( "email_3",team_infoo.getEmail_3());
-                                                inte.putExtra( "email_4" , team_infoo.getEmail_4());
-                                                inte.putExtra( "email_5",team_infoo.getEmail_5());
-                                                inte.putExtra( "email_6" , team_infoo.getEmail_6());
-                                                inte.putExtra( "email_7",team_infoo.getEmail_7());
-                                                inte.putExtra( "email_8" , team_infoo.getEmail_8());
-                                                inte.putExtra( "email_9",team_infoo.getEmail_9());
-                                                inte.putExtra( "email_10" , team_infoo.getEmail_10());
-                                                inte.putExtra( "email_11",team_infoo.getEmail_11());
-                                                inte.putExtra( "team_id" ,team_infoo.team_id);
-                                                inte.putExtra( "team_name",team_infoo.team_name);
-                                                inte.putExtra("user_id" ,user_id);
-                                                inte.putExtra("user_name",user_name);
-                                                inte.putExtra("user_email",user_email);
-                                                startActivity(inte);
-                                                finish();
-
-                                            }
-
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError error) {
-
-                                            }
-                                        });
-
-                                    }
-                                }
-                            });
-                            btn_leave.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-
-                                    AlertDialog diaBox = AskOption(view.getRootView().getContext() , team.getTeam_id() , user_email , user_id );
-                                    diaBox.show();
-                                }
-                            });
                             team_name.setText(team.getTeam_name());
                             if(team.getEmail_1_captain().matches("") || team.getEmail_1_captain().matches("")){
                                 email1.setVisibility(View.GONE);
@@ -491,16 +493,20 @@ public class UserMyTeam extends AppCompatActivity {
                             else{
                                 email11.setText(team.getEmail_11());
                             }
-                            builder.setView(dialogView);
-                            builder.setCancelable(true);
-                            builder.show();
+
                         }
+
+
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
 
                         }
                     });
+
+                    builder.setView(dialogView);
+                    builder.setCancelable(true);
+                    builder.show();
 
                 }
 //                else{
@@ -580,16 +586,17 @@ public class UserMyTeam extends AppCompatActivity {
                         else{
                             Toast.makeText(UserMyTeam.this, "Removed Successfully", Toast.LENGTH_SHORT).show();
 
-                            acceptRef.child("Users").child(user_id).child(team_id).removeValue();
-                            acceptRef.child("Users").child(user_id).child("enrolled").setValue("no");
-                            acceptRef.child("Users").child(user_id).child("team_id").removeValue();
-                            removeFromTeam(team_id,user_email);
+//                            acceptRef.child("Users").child(user_id).child(team_id).removeValue();
+//                            acceptRef.child("Users").child(user_id).child("enrolled").setValue("no");
+//                            acceptRef.child("Users").child(user_id).child("team_id").setValue("");
+//                            removeFromTeam(team_id,user_email);
 
                             Intent intent = new Intent(UserMyTeam.this , DashboardActivity.class);
                             intent.putExtra("user_id" ,user_id);
                             intent.putExtra("user_name",user_name);
                             intent.putExtra("user_email",user_email);
-                            intent.putExtra("captain" , captain);
+                            intent.putExtra("captain" , "");
+                            intent.putExtra("team_id" , "");
                             startActivity(intent);
                             finish();
                         }
@@ -606,6 +613,8 @@ public class UserMyTeam extends AppCompatActivity {
                     }
                 })
                 .create();
+        myQuittingDialogBox.setCancelable(true);
+        myQuittingDialogBox.show();
 
         return myQuittingDialogBox;
     }
@@ -620,6 +629,7 @@ public class UserMyTeam extends AppCompatActivity {
                 for(DataSnapshot snapshot1 : snapshot.getChildren()){
                     String key_to_update = snapshot1.getKey();
                     ref.child(key_to_update).setValue("");
+                    finish();
 //                    Toast.makeText(UserMyTeam.this, snapshot1.getKey(), Toast.LENGTH_SHORT).show();
                 }
             }

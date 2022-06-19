@@ -104,22 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                                   //  editor.putBoolean("login", true);
                                   //  editor.commit();
                                     Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
-                                    if(userMod.captain.matches("yes")){
-                                        Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
-                                        intent.putExtra("user_email" , userMod.email);
-                                        intent.putExtra("user_name", userMod.name);
-                                        intent.putExtra("captain" , userMod.captain);
-                                        intent.putExtra("user_id", userMod.user_id);
-                                        intent.putExtra("user_dob", userMod.dob);
-                                        intent.putExtra("user_phone" , userMod.phone);
-                                        intent.putExtra("user_address" , userMod.address);
-                                        intent.putExtra("team_id" , team_id);
-
-//                                    intent.putExtra("user_id",userMod.user_id);
-                                        startActivity(intent);
-                                        finish();
-                                    }
-                                    else{
+//                                    if(userMod.captain.matches("yes")){
                                         Intent intent = new Intent(LoginActivity.this, UserShowPost.class);
                                         intent.putExtra("user_email" , userMod.email);
                                         intent.putExtra("user_name", userMod.name);
@@ -133,7 +118,22 @@ public class LoginActivity extends AppCompatActivity {
 //                                    intent.putExtra("user_id",userMod.user_id);
                                         startActivity(intent);
                                         finish();
-                                    }
+//                                    }
+//                                    else{
+//                                        Intent intent = new Intent(LoginActivity.this, UserShowPost.class);
+//                                        intent.putExtra("user_email" , userMod.email);
+//                                        intent.putExtra("user_name", userMod.name);
+//                                        intent.putExtra("captain" , userMod.captain);
+//                                        intent.putExtra("user_id", userMod.user_id);
+//                                        intent.putExtra("user_dob", userMod.dob);
+//                                        intent.putExtra("user_phone" , userMod.phone);
+//                                        intent.putExtra("user_address" , userMod.address);
+//                                        intent.putExtra("team_id" , team_id);
+//
+////                                    intent.putExtra("user_id",userMod.user_id);
+//                                        startActivity(intent);
+//                                        finish();
+//                                    }
 
                                 }
                                 else{

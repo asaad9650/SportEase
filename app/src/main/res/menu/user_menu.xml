@@ -7,6 +7,13 @@
 
 
     <item
+        android:id="@+id/action_bar_my_team"
+        android:orderInCategory="100"
+        android:title="My Team"
+        android:icon="@drawable/team"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/action_bar_home"
         android:orderInCategory="100"
         android:title="Home"
@@ -22,7 +29,7 @@
     <item
         android:id="@+id/action_bar_academy"
         android:orderInCategory="100"
-        android:title="Academy Registration"
+        android:title="Join an Academy"
         android:icon="@drawable/academy_logo"
         app:showAsAction="never" />
     <item
@@ -42,7 +49,7 @@
         android:id="@+id/action_bar_my_academy"
         android:orderInCategory="100"
         android:title="My Academy"
-        android:icon="@drawable/coach_icon"
+        android:icon="@drawable/academy_logo"
         app:showAsAction="never" />
 
     <item

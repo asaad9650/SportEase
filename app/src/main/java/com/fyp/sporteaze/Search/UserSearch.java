@@ -92,7 +92,7 @@ public class UserSearch extends AppCompatActivity {
                         userSearchAdapter.notifyDataSetChanged();
                         if(et_search_field.getText().toString().matches("")) {
                             if (check_box_search_male.isChecked()) {
-                                gender = "male";
+                                gender = "Male";
                                 ref.orderByChild("gender").equalTo(gender).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -102,7 +102,7 @@ public class UserSearch extends AppCompatActivity {
                                                 userList.add(user);
                                             }
                                         }
-                                        userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList, null);
+                                        userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList, null , user_id);
                                         search_recycler_view.setAdapter(userSearchAdapter);
                                     }
 
@@ -114,7 +114,7 @@ public class UserSearch extends AppCompatActivity {
 
                             }
                             if (check_box_search_female.isChecked()) {
-                                gender = "female";
+                                gender = "Female";
                                 ref.orderByChild("gender").equalTo(gender).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -124,7 +124,7 @@ public class UserSearch extends AppCompatActivity {
                                                 userList.add(user);
                                             }
                                         }
-                                        userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList, null);
+                                        userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList, null , user_id);
                                         search_recycler_view.setAdapter(userSearchAdapter);
                                     }
 
@@ -145,7 +145,7 @@ public class UserSearch extends AppCompatActivity {
 //                                            userList.add(user);
 //                                        }
                                         }
-                                        userSearchAdapter = new UserSearchAdapter("team.getTeamName()", "user.address", null, teamList);
+                                        userSearchAdapter = new UserSearchAdapter("team.getTeamName()", "user.address", null, teamList , user_id);
                                         search_recycler_view.setAdapter(userSearchAdapter);
                                     }
 
@@ -165,7 +165,7 @@ public class UserSearch extends AppCompatActivity {
                                                 userList.add(user);
                                             }
                                         }
-                                        userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList, null);
+                                        userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList, null , user_id);
                                         search_recycler_view.setAdapter(userSearchAdapter);
                                     }
 
@@ -189,7 +189,7 @@ public class UserSearch extends AppCompatActivity {
                                                     userList.add(user);
                                                 }
                                             }
-                                            userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList, null);
+                                            userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList, null , user_id);
                                             search_recycler_view.setAdapter(userSearchAdapter);
                                         }
 
@@ -209,7 +209,7 @@ public class UserSearch extends AppCompatActivity {
                                                     userList.add(user);
                                                 }
                                             }
-                                            userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList, null);
+                                            userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList, null , user_id );
                                             search_recycler_view.setAdapter(userSearchAdapter);
                                         }
 
@@ -233,7 +233,7 @@ public class UserSearch extends AppCompatActivity {
 //                                            userList.add(user);
 //                                        }
                                         }
-                                        userSearchAdapter = new UserSearchAdapter("team.getTeamName()", "user.address", null, teamList);
+                                        userSearchAdapter = new UserSearchAdapter("team.getTeamName()", "user.address", null, teamList , user_id);
                                         search_recycler_view.setAdapter(userSearchAdapter);
                                     }
 
@@ -244,7 +244,7 @@ public class UserSearch extends AppCompatActivity {
                                 });
                             }
                             if (check_box_search_male.isChecked()) {
-                                gender = "male";
+                                gender = "Male";
                                 ref.orderByChild("gender").equalTo(gender).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -254,7 +254,7 @@ public class UserSearch extends AppCompatActivity {
                                                 userList.add(user);
                                             }
                                         }
-                                        userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList, null);
+                                        userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList, null , user_id);
                                         search_recycler_view.setAdapter(userSearchAdapter);
                                     }
 
@@ -266,7 +266,7 @@ public class UserSearch extends AppCompatActivity {
 
                             }
                             if (check_box_search_female.isChecked()) {
-                                gender = "female";
+                                gender = "Female";
                                 ref.orderByChild("gender").equalTo(gender).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -276,7 +276,7 @@ public class UserSearch extends AppCompatActivity {
                                                 userList.add(user);
                                             }
                                         }
-                                        userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList, null);
+                                        userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList, null , user_id);
                                         search_recycler_view.setAdapter(userSearchAdapter);
                                     }
 
@@ -314,7 +314,7 @@ public class UserSearch extends AppCompatActivity {
                             userList.add(user);
                         }
                     }
-                    userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList , null);
+                    userSearchAdapter = new UserSearchAdapter("user.email", "user.address", userList , null , user_id);
                     search_recycler_view.setAdapter(userSearchAdapter);
                 }
 

@@ -88,7 +88,7 @@ public class UserAcademyAdapter extends RecyclerView.Adapter {
                         DatabaseReference user_ref = FirebaseDatabase.getInstance().getReference();
                         DatabaseReference team_name_ref = FirebaseDatabase.getInstance().getReference();
 
-                        if(!individual_academy.matches("") && individual_academy !=null){
+                        if(individual_academy.matches("")){
                             String key = db.push().getKey();
 
                             user_ref.child("Users").child(user_id).addValueEventListener(new ValueEventListener() {

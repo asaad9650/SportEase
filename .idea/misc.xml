@@ -53,7 +53,35 @@
         <entry key="..\:/Users/SaadAmir/Desktop/Zaryab Uni project/Sporteaze/app/src/main/res/layout/view_ground_popup.xml" value="0.3601190476190476" />
         <entry key="..\:/Users/SaadAmir/Desktop/Zaryab Uni project/Sporteaze/app/src/main/res/menu/academy_menu.xml" value="0.3458333333333333" />
         <entry key="..\:/Users/SaadAmir/Desktop/Zaryab Uni project/Sporteaze/app/src/main/res/menu/user_menu.xml" value="0.1" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1615" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/drawable/ic_baseline_visibility_off_24.xml" value="0.1615" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/academy_rent_popup.xml" value="0.19293478260869565" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_academy_add_ground.xml" value="0.11875" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_academy_ground_home.xml" value="0.11875" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_academy_ground_update.xml" value="0.11875" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_academy_login.xml" value="0.19293478260869565" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_academy_view_ground.xml" value="0.11875" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_admin_login.xml" value="0.19293478260869565" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_change_password.xml" value="0.19293478260869565" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_code.xml" value="0.19293478260869565" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_forgot_password.xml" value="0.19293478260869565" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_login.xml" value="0.19293478260869565" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_registration.xml" value="0.19293478260869565" />
         <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_team_rent_ground.xml" value="0.1" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_user_chat_with.xml" value="0.15" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_user_create_event.xml" value="0.22" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_user_event_home.xml" value="0.19293478260869565" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_user_event_view_upcoming_matches.xml" value="0.11875" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_user_search.xml" value="0.19293478260869565" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/activity_user_view_coach.xml" value="0.1852355072463768" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/coaches_layout_file.xml" value="0.1852355072463768" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/grounds_layyout_file.xml" value="0.11875" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/search_layout_file.xml" value="0.11458333333333333" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/team_popup.xml" value="0.11875" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/layout/upcoming_matches_layout_file.xml" value="0.22" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/menu/academy_menu.xml" value="0.11875" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/menu/user_menu.xml" value="0.2" />
+        <entry key="..\:/Users/Shahzaib/Desktop/SPORTEASE_FINAL_FOLDER/app/src/main/res/mipmap-anydpi-v26/ic_main_launcher.xml" value="0.1305" />
         <entry key="..\:/Users/Shahzaib/StudioProjects/SportEase/app/src/main/res/layout/accepted_match_request_layout_file.xml" value="0.1911231884057971" />
         <entry key="..\:/Users/Shahzaib/StudioProjects/SportEase/app/src/main/res/layout/activity_academy_dashboard.xml" value="0.1911231884057971" />
         <entry key="..\:/Users/Shahzaib/StudioProjects/SportEase/app/src/main/res/layout/activity_accepted_match_request.xml" value="0.1911231884057971" />

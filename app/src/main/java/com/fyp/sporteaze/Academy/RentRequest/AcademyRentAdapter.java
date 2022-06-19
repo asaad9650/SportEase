@@ -61,9 +61,7 @@ public class AcademyRentAdapter extends RecyclerView.Adapter {
                 TextView requested_by_name = dialogView.findViewById(R.id.requested_by_name);
                 TextView requested_by_age = dialogView.findViewById(R.id.requested_by_age);
                 TextView requested_by_email = dialogView.findViewById(R.id.requested_by_email);
-                TextView requested_by_phone = dialogView.findViewById(R.id.requested_by_phone);
                 TextView requested_by_address = dialogView.findViewById(R.id.requested_by_address);
-                TextView requested_by_expertise = dialogView.findViewById(R.id.requested_by_expertise);
                 AppCompatButton btn_popup_academy_request_accept = dialogView.findViewById(R.id.btn_popup_academy_request_accept);
                 AppCompatButton btn_popup_academy_request_reject = dialogView.findViewById(R.id.btn_popup_academy_request_reject);
 

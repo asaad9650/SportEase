@@ -6,13 +6,15 @@
     android:background="@color/whiteVar"
     android:paddingBottom="5dp"
     >
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/whiteVar"
-        tools:context=".LoginActivity">
+        tools:context=".LoginActivity"
+        android:orientation="vertical"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/color_box"
@@ -49,7 +51,7 @@
             android:drawableLeft="@drawable/ic_account_circle_black_24dp"
             android:drawablePadding="11dp"
             android:hint="Name"
-            android:inputType="text"
+            android:inputType="textCapWords"
             android:paddingLeft="15dp"
             android:paddingTop="10dp"
             android:paddingRight="15dp"
@@ -69,7 +71,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/edit_round"
-            android:drawableLeft="@drawable/ic_baseline_email_24"
+            android:drawableLeft="@drawable/ic_email_black_24dp"
             android:drawablePadding="11dp"
             android:hint="Email"
             android:inputType="textEmailAddress"
@@ -106,7 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/edit_round"
-                android:drawableStart="@drawable/ic_baseline_lock_24"
+                android:drawableStart="@drawable/ic_lock_black_24dp"
                 android:drawablePadding="10dp"
                 android:hint="Password"
                 android:textColor="#000"
@@ -150,7 +152,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/edit_round"
-            android:drawableLeft="@drawable/ic_baseline_call_24"
+            android:drawableLeft="@drawable/call_black"
             android:drawablePadding="11dp"
             android:hint="Phone Number"
             android:inputType="phone"
@@ -173,7 +175,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/edit_round"
-            android:drawableLeft="@drawable/ic_cake_black_24dp"
+            android:drawableLeft="@drawable/ic_baseline_cake_24"
             android:drawablePadding="11dp"
             android:hint="Date of Birth"
             android:inputType="date"
@@ -196,7 +198,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/edit_round"
-            android:drawableLeft="@drawable/ic_baseline_location_on_24"
+            android:drawableLeft="@drawable/address_black"
             android:drawablePadding="11dp"
             android:hint="Address"
             android:inputType="textPostalAddress"
@@ -211,28 +213,47 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dob" />
 
-        <EditText
+        <TextView
             android:id="@+id/gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/edit_round"
-            android:drawableLeft="@drawable/ic_baseline_perm_identity_24"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
             android:drawablePadding="11dp"
-            android:hint="Gender"
-            android:inputType="text"
-            android:paddingLeft="15dp"
+            android:text="Gender"
+            android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:paddingRight="15dp"
             android:paddingBottom="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/common_google_signin_btn_text_light"
-            android:textSize="18dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/address" />
+            android:textColor="#000"
+            android:textSize="18dp"/>
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <RadioButton
+                android:id="@+id/checkbox_male"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"
+                android:textColor="#000"
+                android:textStyle="bold"
+                />
+
+            <RadioButton
+                android:id="@+id/checkbox_female"
+                android:text="Female"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RadioGroup>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/register"
@@ -254,5 +275,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/gender" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </LinearLayout>
 </ScrollView>

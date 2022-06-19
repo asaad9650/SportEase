@@ -28,7 +28,6 @@ public class ViewInvoiceAdapter extends RecyclerView.Adapter{
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.invoices_layout_file, parent,false);
-//        return null;
         ViewHolderClass viewHolderClass = new ViewHolderClass(view);
         return viewHolderClass;
     }
@@ -53,9 +52,7 @@ public class ViewInvoiceAdapter extends RecyclerView.Adapter{
         TextView recycler_invoice_id;
         TextView recycler_invoice_event;
         TextView recycler_invoice_total;
-        View view;
-//        AppCompatButton btn_coach_view_details;
-//        AppCompatButton btn_academy_delete;
+
         public ViewHolderClass(@NonNull View itemView) {
             super(itemView);
 
@@ -64,19 +61,7 @@ public class ViewInvoiceAdapter extends RecyclerView.Adapter{
             recycler_invoice_event = itemView.findViewById(R.id.recycler_invoice_event);
             recycler_invoice_total = itemView.findViewById(R.id.recycler_invoice_total);
 
-//            users_email = itemView.findViewById(R.id.recylcer_user_email);
-//            btn_coach_view_details=itemView.findViewById(R.id.btn_coach_view_details);
-//            btn_academy_view_details.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//
-//                    Intent intent = new Intent( view.getContext(), AdminViewAcademyDetails.class);
-//                    intent.putExtra("academy_image", get);
-//                    view.getContext().startActivity(intent);
-//
-//
-//                }
-//            });
+
 
         }
     }

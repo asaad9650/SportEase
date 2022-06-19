@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.fyp.sporteaze.Event.UserShowPostAdapter;
 import com.fyp.sporteaze.Model.JoinTeam;
 import com.fyp.sporteaze.Model.Team;
+import com.fyp.sporteaze.Model.UserTeamInfo;
 import com.fyp.sporteaze.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,12 +35,14 @@ public class TeamJoinRequestAdapter extends RecyclerView.Adapter
     DatabaseReference reference = firebaseDatabase.getReference();
     DatabaseReference check_reference = firebaseDatabase.getReference();
     DatabaseReference pushRef = firebaseDatabase.getReference();
+    Team team ;
+    DatabaseReference user_push = firebaseDatabase.getReference();
 
-
-    public TeamJoinRequestAdapter(List<JoinTeam> joinTeamList , String key, String team_id) {
+    public TeamJoinRequestAdapter(List<JoinTeam> joinTeamList , String key, String team_id, String user_id) {
         this.joinTeamList = joinTeamList;
         this.key = key;
         this.team_id = team_id;
+        this.user_id = user_id;
     }
 
     @NonNull
@@ -60,66 +63,117 @@ public class TeamJoinRequestAdapter extends RecyclerView.Adapter
         viewHolderClass.requester_address.setText("Address: " + joinTeam.getUser_address());
         viewHolderClass.requester_phone.setText("Phone: " + joinTeam.getUser_phone());
 
+
         viewHolderClass.btn_accept_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String key = check_reference.push().getKey();
-                reference.child("teams").child(team_id).addValueEventListener(new ValueEventListener() {
+
+                reference.child("teams").child(team_id).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        Team team = snapshot.getValue(Team.class);
+                        team = snapshot.getValue(Team.class);
                         viewHolderClass.ll_requests.setVisibility(View.GONE);
-
                         if(team.email_11.matches("")){
                             pushRef.child("teams").child(team_id).child("email_11").setValue(joinTeam.getUser_email());
                             Toast.makeText(view.getContext(), "Added in team", Toast.LENGTH_SHORT).show();
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("team_id").setValue(team.getTeam_id());
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("enrolled").setValue("yes");
+                            UserTeamInfo userTeamInfo = new UserTeamInfo(team_id , "approved" , team.getTeam_name() , user_id);
+                            user_push.child("Users").child(joinTeam.getUser_id()).child(team_id).setValue(userTeamInfo);
                         }
                         else if (team.email_10.matches("")){
                             pushRef.child("teams").child(team_id).child("email_10").setValue(joinTeam.getUser_email());
                             Toast.makeText(view.getContext(), "Added in team", Toast.LENGTH_SHORT).show();
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("enrolled").setValue("yes");
+
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("team_id").setValue(team.getTeam_id());
+                            UserTeamInfo userTeamInfo = new UserTeamInfo(team_id , "approved" , team.getTeam_name() , user_id);
+                            user_push.child("Users").child(joinTeam.getUser_id()).child(team_id).setValue(userTeamInfo);
                         }
                         else if (team.email_9.matches("")){
                             pushRef.child("teams").child(team_id).child("email_9").setValue(joinTeam.getUser_email());
                             Toast.makeText(view.getContext(), "Added in team", Toast.LENGTH_SHORT).show();
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("team_id").setValue(team.getTeam_id());
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("enrolled").setValue("yes");
+                            UserTeamInfo userTeamInfo = new UserTeamInfo(team_id , "approved" , team.getTeam_name() , user_id);
+                            user_push.child("Users").child(joinTeam.getUser_id()).child(team_id).setValue(userTeamInfo);
+
                         }
+
                         else if (team.email_8.matches("")){
                             pushRef.child("teams").child(team_id).child("email_8").setValue(joinTeam.getUser_email());
                             Toast.makeText(view.getContext(), "Added in team", Toast.LENGTH_SHORT).show();
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("team_id").setValue(team.getTeam_id());
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("enrolled").setValue("yes");
+                            UserTeamInfo userTeamInfo = new UserTeamInfo(team_id , "approved" , team.getTeam_name() , user_id);
+                            user_push.child("Users").child(joinTeam.getUser_id()).child(team_id).setValue(userTeamInfo);
                         }
                         else if (team.email_7.matches("")){
                             pushRef.child("teams").child(team_id).child("email_7").setValue(joinTeam.getUser_email());
                             Toast.makeText(view.getContext(), "Added in team", Toast.LENGTH_SHORT).show();
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("team_id").setValue(team.getTeam_id());
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("enrolled").setValue("yes");
+                            UserTeamInfo userTeamInfo = new UserTeamInfo(team_id , "approved" , team.getTeam_name() , user_id);
+                            user_push.child("Users").child(joinTeam.getUser_id()).child(team_id).setValue(userTeamInfo);
+
                         }
                         else if (team.email_6.matches("")){
                             pushRef.child("teams").child(team_id).child("email_6").setValue(joinTeam.getUser_email());
                             Toast.makeText(view.getContext(), "Added in team", Toast.LENGTH_SHORT).show();
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("team_id").setValue(team.getTeam_id());
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("enrolled").setValue("yes");
+                            UserTeamInfo userTeamInfo = new UserTeamInfo(team_id , "approved" , team.getTeam_name() , user_id);
+                            user_push.child("Users").child(joinTeam.getUser_id()).child(team_id).setValue(userTeamInfo);
+
                         }
                         else if (team.email_5.matches("")){
                             pushRef.child("teams").child(team_id).child("email_5").setValue(joinTeam.getUser_email());
                             Toast.makeText(view.getContext(), "Added in team", Toast.LENGTH_SHORT).show();
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("team_id").setValue(team.getTeam_id());
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("enrolled").setValue("yes");
+                            UserTeamInfo userTeamInfo = new UserTeamInfo(team_id , "approved" , team.getTeam_name() , user_id);
+                            user_push.child("Users").child(joinTeam.getUser_id()).child(team_id).setValue(userTeamInfo);
+
                         }
                         else if (team.email_4.matches("")){
                             pushRef.child("teams").child(team_id).child("email_4").setValue(joinTeam.getUser_email());
                             Toast.makeText(view.getContext(), "Added in team", Toast.LENGTH_SHORT).show();
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("team_id").setValue(team.getTeam_id());
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("enrolled").setValue("yes");
+                            UserTeamInfo userTeamInfo = new UserTeamInfo(team_id , "approved" , team.getTeam_name() , user_id);
+                            user_push.child("Users").child(joinTeam.getUser_id()).child(team_id).setValue(userTeamInfo);
+
                         }
                         else if (team.email_3.matches("")){
                             pushRef.child("teams").child(team_id).child("email_3").setValue(joinTeam.getUser_email());
                             Toast.makeText(view.getContext(), "Added in team", Toast.LENGTH_SHORT).show();
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("team_id").setValue(team.getTeam_id());
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("enrolled").setValue("yes");
+                            UserTeamInfo userTeamInfo = new UserTeamInfo(team_id, "approved" , team.getTeam_name() , user_id);
+                            user_push.child("Users").child(joinTeam.getUser_id()).child(team_id).setValue(userTeamInfo);
+
                         }
                         else if (team.email_2_vice_captain.matches("")){
                             pushRef.child("teams").child(team_id).child("email_2_vice_captain").setValue(joinTeam.getUser_email());
                             Toast.makeText(view.getContext(), "Added in team", Toast.LENGTH_SHORT).show();
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("team_id").setValue(team.getTeam_id());
+                            user_push.child("Users").child(joinTeam.getUser_id()).child("enrolled").setValue("yes");
+                            UserTeamInfo userTeamInfo = new UserTeamInfo(team_id , "approved" , team.getTeam_name() , user_id);
+                            user_push.child("Users").child(joinTeam.getUser_id()).child(team_id).setValue(userTeamInfo);
                         }
                         else{
                             Toast.makeText(view.getContext(), "Slots are already full!", Toast.LENGTH_SHORT).show();
                         }
+
                         check_reference.child("team_join_request").child(key).removeValue();
-}
+                    }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
+
                     }
                 });
-
 
             }
         });

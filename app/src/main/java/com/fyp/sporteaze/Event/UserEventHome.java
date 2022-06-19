@@ -76,7 +76,7 @@ public class UserEventHome extends AppCompatActivity {
         view_schedule_box.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserEventHome.this , UserEventViewSchedule.class);
+                Intent intent = new Intent(UserEventHome.this , UserEventViewUpcomingMatches.class);
                 intent.putExtra("user_id", user_id);
                 intent.putExtra("user_name" , user_name);
                 intent.putExtra("user_email" , user_email);

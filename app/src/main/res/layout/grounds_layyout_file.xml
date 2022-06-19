@@ -47,7 +47,7 @@
         android:elevation="4dp"
         android:layout_margin="5dp"
         android:layout_marginTop="15dp"
-        android:text="View Details &amp; Book"
+        android:text="View Details"
         android:textColor="@color/whiteVar"
         android:padding="10dp"
         android:textSize="15sp"

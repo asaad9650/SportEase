@@ -100,11 +100,9 @@ public class AcademyGenerateInvoice extends AppCompatActivity {
                                 et_generate_invoice_event.setText("");
                                 et_generate_invoice_total_charges.setText("");
                                 et_generate_invoice_medical_trainer_charges.setText("");
-//                                pgsBar.setVisibility(view.GONE);
                             }
                             else{
                                 Toast.makeText(AcademyGenerateInvoice.this, "Event should contain maximum 12 characters", Toast.LENGTH_SHORT).show();
-
                             }
                         }
                         else{
@@ -131,16 +129,9 @@ public class AcademyGenerateInvoice extends AppCompatActivity {
         PdfDocument.Page page = document.startPage(pageInfo);
         Canvas canvas = page.getCanvas();
         Paint paint = new Paint();
-//        paint.setTextAlign(Paint.Align.CENTER);
-//        paint.setColor(Color.RED);
-//        canvas.drawCircle(50, 50, 30, paint);
-
 
         paint.setColor(Color.BLACK);
-//        paint.setTextAlign(Paint.Align.CENTER);
         int xPos = (canvas.getWidth() / 2);
-//        int yPos = (int) ((canvas.getHeight() / 2) - ((paint.descent() + paint.ascent()) / 2)) ;
-
         canvas.drawText("--------" , 10 , 10 , paint);
         canvas.drawText(heading,10 ,20 , paint);
         canvas.drawText("--------" , 10 , 30 , paint);
@@ -160,107 +151,49 @@ public class AcademyGenerateInvoice extends AppCompatActivity {
         canvas.drawText(_basic_charges, canvas.getWidth()-100, 170, paint);
         canvas.drawText(_total_charges + " PKR", canvas.getWidth()-100, 210, paint);
 
-        //canvas.drawt
-        // finish the page
         document.finishPage(page);
-// draw text on the graphics object of the page
-        // Create Page 2
         pageInfo = new PdfDocument.PageInfo.Builder(300, 600, 2).create();
         page = document.startPage(pageInfo);
         canvas = page.getCanvas();
         paint = new Paint();
         paint.setColor(Color.BLUE);
         document.finishPage(page);
-        // write the document content
         String directory_path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).getPath() + "/Sporteaze/Invoices/";
-//        Toast.makeText(this, directory_path, Toast.LENGTH_SHORT).show();
         File file = new File(directory_path);
         if (!file.exists()) {
             file.mkdirs();
-
         }
         String targetPdf = directory_path+filename;
         File filePath = new File(targetPdf);
         try {
             document.writeTo(new FileOutputStream(filePath));
-
             try {
                 String host = "smtp.gmail.com";
                 String port = "587";
                 String mailFrom = "coffeeline9@gmail.com";
                 String password = "dwcqckylgqngqoxr";
 
-                // message info
-                String mailTo = "asaad9650@gmail.com";
+                String mailTo = "fypsporteaze@gmail.com";
                 String subject = "Invoice";
                 String message = "";
                 String attachFiles =filePath.toString();
-//                Bundle
-//                attachFiles[0] = filePath.toString();
-
                 sendEmailWithAttachments( view , host, port, mailFrom, password, mailTo,
                         subject, message, attachFiles);
-//                SendMail(filePath.toString());
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
-
-
         } catch (IOException e) {
             Log.e("main", "error "+e.toString());
-            Toast.makeText(this, "Something wrong: " + e.toString(),  Toast.LENGTH_LONG).show();
-
+            Toast.makeText(this, "Something went wrong: " + e.toString(),  Toast.LENGTH_LONG).show();
         }
-        // close the document
         document.close();
-//        Uri path = Uri.fromFile(filePath);
-
     }
 
-//    public void SendMail(String filenamee) throws MessagingException {
-//        String host = "smtp.gmail.com";
-//        String Password = "dwcqckylgqngqoxr";
-//        String from = "coffeeline9@gmail.com";
-//        String toAddress = "asaad9650@gmail.com";
-//        String filename = filenamee;
-//        // Get system properties
-//        Properties props = System.getProperties();
-//        props.put("mail.smtp.host", host);
-//        props.put("mail.smtps.auth", "true");
-//        props.put("mail.smtp.starttls.enable", "true");
-//        Session session = Session.getInstance(props, null);
-//
-//        MimeMessage message = new MimeMessage(session);
-//        message.setFrom(new InternetAddress(from));
-//        message.setRecipients(Message.RecipientType.TO, toAddress);
-//        message.setSubject("JavaMail Attachment");
-//        BodyPart messageBodyPart = new MimeBodyPart();
-//        messageBodyPart.setText("Here's the file");
-//        Multipart multipart = new MimeMultipart();
-//        multipart.addBodyPart(messageBodyPart);
-//        messageBodyPart = new MimeBodyPart();
-//        FileDataSource source = new FileDataSource(filename);
-//        messageBodyPart.setDataHandler(new DataHandler(source));
-//        messageBodyPart.setFileName(filename);
-//        multipart.addBodyPart(messageBodyPart);
-//        message.setContent(multipart);
-//
-//        try {
-//            Transport tr = session.getTransport("smtps");
-//            tr.connect(host, from, Password);
-//            tr.sendMessage(message, message.getAllRecipients());
-//            System.out.println("Mail Sent Successfully");
-//            tr.close();
-//        } catch (SendFailedException sfe) {
-//            System.out.println(sfe);
-//        }
-//    }
 
     public void sendEmailWithAttachments(View view , String host, String port,
                                                 final String userName, final String password, String toAddress,
                                                 String subject, String message, String file)
             throws AddressException, MessagingException {
-
 
         int SDK_INT = android.os.Build.VERSION.SDK_INT;
         if (SDK_INT > 8)
@@ -270,9 +203,6 @@ public class AcademyGenerateInvoice extends AppCompatActivity {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                     .permitAll().build();
             StrictMode.setThreadPolicy(policy);
-//            sendEmailWithAttachments();
-            //your codes here
-
             Properties properties = new Properties();
             properties.put("mail.smtp.host", host);
             properties.put("mail.smtp.port", port);
@@ -280,8 +210,6 @@ public class AcademyGenerateInvoice extends AppCompatActivity {
             properties.put("mail.smtp.starttls.enable", "true");
             properties.put("mail.user", userName);
             properties.put("mail.password", password);
-
-            // creates a new session with an authenticator
             Authenticator auth = new Authenticator() {
                 public PasswordAuthentication getPasswordAuthentication() {
                     return new PasswordAuthentication(userName, password);
@@ -289,7 +217,6 @@ public class AcademyGenerateInvoice extends AppCompatActivity {
             };
             Session session = Session.getInstance(properties, auth);
 
-            // creates a new e-mail message
             Message msg = new MimeMessage(session);
 
             msg.setFrom(new InternetAddress(userName));
@@ -298,60 +225,25 @@ public class AcademyGenerateInvoice extends AppCompatActivity {
             msg.setSubject(subject);
             msg.setSentDate(new Date());
 
-            // creates message part
             MimeBodyPart messageBodyPart = new MimeBodyPart();
             messageBodyPart.setContent(message, "text/html");
-
-            // creates multi-part
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(messageBodyPart);
-
-            // adds attachments
-//            if (attachFiles != null && attachFiles.length > 0) {
-//                for (String filePath : attachFiles) {
                     MimeBodyPart attachPart = new MimeBodyPart();
-
                     try {
                         attachPart.attachFile(file);
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
-
                     multipart.addBodyPart(attachPart);
-//                }
-//            }
-
-            // sets the multi-part as e-mail's content
             msg.setContent(multipart);
 
-            // sends the e-mail
             Transport.send(msg);
-
             Toast.makeText(this, "Email Sent successfully", Toast.LENGTH_SHORT).show();
             pgsBar.setVisibility(view.GONE);
             btn_generate_invoice.setVisibility(view.VISIBLE);
-
-
-
-
         }
 
-
-        // sets SMTP server properties
-
-
     }
-//    public void onViewCreated(View view, Bundle savedInstanceState)
-//    {
-//        int SDK_INT = android.os.Build.VERSION.SDK_INT;
-//        if (SDK_INT > 8)
-//        {
-//            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-//                    .permitAll().build();
-//            StrictMode.setThreadPolicy(policy);
-////            sendEmailWithAttachments();
-//            //your codes here
-//
-//        }
-//    }
+
 }

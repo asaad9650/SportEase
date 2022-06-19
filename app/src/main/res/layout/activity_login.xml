@@ -78,8 +78,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/email"
-
-            app:passwordToggleDrawable="@drawable/ic_baseline_visibility_off_24"
+            app:passwordToggleDrawable="@drawable/ic_baseline_visibility_24"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText

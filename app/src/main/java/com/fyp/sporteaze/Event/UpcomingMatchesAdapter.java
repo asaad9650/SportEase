@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +20,8 @@ import com.fyp.sporteaze.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -54,21 +57,45 @@ public class UpcomingMatchesAdapter extends RecyclerView.Adapter {
         CreateMatchBetweenTeams createMatchBetweenTeams = createMatchBetweenTeamsList.get(position);
         ViewHolderClass viewHolderClass = (ViewHolderClass) holder;
 
-        viewHolderClass.upcoming_match_team_name.setText(Html.fromHtml("<u><b>Team Name:</b></u>  " + createMatchBetweenTeams.getTeam_1().getTeam_name()));
-        viewHolderClass.upcoming_match_team_captain.setText(Html.fromHtml("<u><b>Team Captain:</b></u>  " +  createMatchBetweenTeams.getTeam_1().getEmail_1_captain()));
-        viewHolderClass.upcoming_match_other_players.setText(Html.fromHtml("<u><b>Other Players:</b></u>  " +createMatchBetweenTeams.getTeam_1().getEmail_2_vice_captain() +"(VC), " + createMatchBetweenTeams.getTeam_1().getEmail_3() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_4() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_5() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_6() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_7() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_8() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_9() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_10() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_11() ));
-        viewHolderClass.upcoming_match_winning_price.setText(Html.fromHtml("<u><b>Team Name:</b></u>  " + createMatchBetweenTeams.getTeam_1().getTeam_name()));
-        viewHolderClass.upcoming_match_ground_name.setText(Html.fromHtml("<u><b>Ground Name and Address :</b></u>  " + createMatchBetweenTeams.getMatch_venue()));
-        viewHolderClass.upcoming_match_status.setText(Html.fromHtml("<u><b>Status:</b></u>  " + createMatchBetweenTeams.getStatus()));
-        viewHolderClass.upcoming_match_opponent_team.setText(Html.fromHtml("<u><b>Opponent Team Name:</b></u>  " + createMatchBetweenTeams.getTeam_2().getTeam_name()));
-        viewHolderClass.upcoming_match_starting_time.setText(Html.fromHtml("<u><b>Date:</b></u>  " + createMatchBetweenTeams.getMatch_date()));
-        viewHolderClass.upcoming_match_opponent_players.setText(Html.fromHtml("<u><b>Opponent Players:</b></u>  " +createMatchBetweenTeams.getTeam_2().getEmail_2_vice_captain() +"(VC), " + createMatchBetweenTeams.getTeam_2().getEmail_3() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_4() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_5() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_6() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_7() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_8() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_9() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_10() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_11() ));
-        viewHolderClass.okay_button.setVisibility(View.GONE);
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date strDate = sdf.parse(createMatchBetweenTeams.getMatch_date());
+            if (new Date().before(strDate)) {
+                viewHolderClass.upcoming_match_team_name.setText(Html.fromHtml("<u><b>Team Name:</b></u>  " + createMatchBetweenTeams.getTeam_1().getTeam_name()));
+                viewHolderClass.upcoming_match_team_captain.setText(Html.fromHtml("<u><b>Team Captain:</b></u>  " +  createMatchBetweenTeams.getTeam_1().getEmail_1_captain()));
+                viewHolderClass.upcoming_match_other_players.setText(Html.fromHtml("<u><b>Other Players:</b></u>  " +createMatchBetweenTeams.getTeam_1().getEmail_2_vice_captain() +"(VC), " + createMatchBetweenTeams.getTeam_1().getEmail_3() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_4() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_5() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_6() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_7() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_8() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_9() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_10() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_11() ));
+                viewHolderClass.upcoming_match_winning_price.setText(Html.fromHtml("<u><b>Team Name:</b></u>  " + createMatchBetweenTeams.getTeam_1().getTeam_name()));
+                viewHolderClass.upcoming_match_ground_name.setText(Html.fromHtml("<u><b>Ground Name and Address :</b></u>  " + createMatchBetweenTeams.getMatch_venue()));
+                viewHolderClass.upcoming_match_status.setText(Html.fromHtml("<u><b>Status:</b></u>  " + createMatchBetweenTeams.getStatus()));
+                viewHolderClass.upcoming_match_opponent_team.setText(Html.fromHtml("<u><b>Opponent Team Name:</b></u>  " + createMatchBetweenTeams.getTeam_2().getTeam_name()));
+                viewHolderClass.upcoming_match_starting_time.setText(Html.fromHtml("<u><b>Date:</b></u>  " + createMatchBetweenTeams.getMatch_date()));
+                viewHolderClass.upcoming_match_opponent_players.setText(Html.fromHtml("<u><b>Opponent Players:</b></u>  " +createMatchBetweenTeams.getTeam_2().getEmail_2_vice_captain() +"(VC), " + createMatchBetweenTeams.getTeam_2().getEmail_3() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_4() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_5() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_6() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_7() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_8() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_9() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_10() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_11() ));
+                viewHolderClass.okay_button.setVisibility(View.GONE);
+//              viewHolderClass.postpone_button.setVisibility(View.GONE);
+            }
+            else{
+                viewHolderClass.upcoming_match_team_name.setText(Html.fromHtml("<u><b>Team Name:</b></u>  " + createMatchBetweenTeams.getTeam_1().getTeam_name()));
+                viewHolderClass.upcoming_match_team_captain.setText(Html.fromHtml("<u><b>Team Captain:</b></u>  " +  createMatchBetweenTeams.getTeam_1().getEmail_1_captain()));
+                viewHolderClass.upcoming_match_other_players.setText(Html.fromHtml("<u><b>Other Players:</b></u>  " +createMatchBetweenTeams.getTeam_1().getEmail_2_vice_captain() +"(VC), " + createMatchBetweenTeams.getTeam_1().getEmail_3() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_4() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_5() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_6() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_7() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_8() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_9() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_10() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_11() ));
+                viewHolderClass.upcoming_match_winning_price.setText(Html.fromHtml("<u><b>Team Name:</b></u>  " + createMatchBetweenTeams.getTeam_1().getTeam_name()));
+                viewHolderClass.upcoming_match_ground_name.setText(Html.fromHtml("<u><b>Ground Name and Address :</b></u>  " + createMatchBetweenTeams.getMatch_venue()));
+                viewHolderClass.upcoming_match_status.setText(Html.fromHtml("<u><b>Status:</b></u>  " + "Played"));
+                viewHolderClass.upcoming_match_opponent_team.setText(Html.fromHtml("<u><b>Opponent Team Name:</b></u>  " + createMatchBetweenTeams.getTeam_2().getTeam_name()));
+                viewHolderClass.upcoming_match_starting_time.setText(Html.fromHtml("<u><b>Date:</b></u>  " + createMatchBetweenTeams.getMatch_date()));
+                viewHolderClass.upcoming_match_opponent_players.setText(Html.fromHtml("<u><b>Opponent Players:</b></u>  " +createMatchBetweenTeams.getTeam_2().getEmail_2_vice_captain() +"(VC), " + createMatchBetweenTeams.getTeam_2().getEmail_3() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_4() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_5() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_6() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_7() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_8() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_9() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_10() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_11() ));
+                viewHolderClass.okay_button.setVisibility(View.GONE);
+                viewHolderClass.postpone_button.setVisibility(View.GONE);
+                viewHolderClass.cancel_match_button.setVisibility(View.GONE);
+            }
+        } catch (ParseException e) {
 
+        }
         viewHolderClass.postpone_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 final Calendar c = Calendar.getInstance();
+
                 year = c.get(Calendar.YEAR);
                 month = c.get(Calendar.MONTH);
                 day = c.get(Calendar.DAY_OF_MONTH);
@@ -79,8 +106,26 @@ public class UpcomingMatchesAdapter extends RecyclerView.Adapter {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
 
-                                date_reference.child(createMatchBetweenTeams.getCreated_team_match_id()).child("match_date").setValue(dayOfMonth + "/" + (monthOfYear+1) +"/" +year);
-                                viewHolderClass.upcoming_match_starting_time.setText(Html.fromHtml("<u><b>Date:</b></u>  " + dayOfMonth + "/" + (monthOfYear+1) +"/" +year));
+                                try{
+                                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                                    Date strDate = sdf.parse(dayOfMonth + "/" + (monthOfYear+1) +"/" +year);
+
+                                    if(new Date().before(strDate)){
+                                        date_reference.child(createMatchBetweenTeams.getCreated_team_match_id()).child("match_date").setValue(dayOfMonth + "/" + (monthOfYear+1) +"/" +year);
+                                        viewHolderClass.upcoming_match_starting_time.setText(Html.fromHtml("<u><b>Date:</b></u>  " + dayOfMonth + "/" + (monthOfYear+1) +"/" +year));
+
+                                    }
+                                    else{
+                                        Toast.makeText(view.getContext(), "You cannot set a past date for upcoming match.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                                catch (Exception e){
+                                    Toast.makeText(view.getContext(), "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
+                                }
+
+//                                    if(new Date().before()){}
+
+
                             }
                         }, year, month, day);
 
@@ -91,6 +136,7 @@ public class UpcomingMatchesAdapter extends RecyclerView.Adapter {
         viewHolderClass.cancel_match_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 AlertDialog alertbox = new AlertDialog.Builder(view.getContext())
                         .setTitle("Cancel")
                         .setMessage("Are you sure you want to cancel match?")

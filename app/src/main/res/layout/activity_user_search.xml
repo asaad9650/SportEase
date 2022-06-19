@@ -27,8 +27,11 @@
             android:background="@drawable/edit_round"
             android:padding="10dp"
             android:textColor="#000"
-            android:hint="Search by user name, email or team name"
+            android:inputType="textCapWords"
+            android:hint="Search by user or team name"
             android:textColorHint="#5E000000"
+            android:singleLine="true"
+            android:maxLines="1"
             ></EditText>
 
         <ImageView

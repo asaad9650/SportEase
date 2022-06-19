@@ -77,7 +77,7 @@ public class TeamJoinRequests extends AppCompatActivity {
                             joinTeamList.add(joinTeam);
                             String key = snapshot2.getKey();
 //                            Toast.makeText(TeamJoinRequests.this, snapshot2.getKey(), Toast.LENGTH_LONG).show();
-                            teamJoinRequestAdapter = new TeamJoinRequestAdapter(joinTeamList , key , team_id);
+                            teamJoinRequestAdapter = new TeamJoinRequestAdapter(joinTeamList , key , team_id , user_id);
                             join_request_recycler_view.setAdapter(teamJoinRequestAdapter);
                             join_request_recycler_view.setVisibility(View.VISIBLE);
                             no_join_requests.setVisibility(View.GONE);

@@ -39,7 +39,6 @@ public class UserShowAcademies extends AppCompatActivity {
 //        user_name = extras.getString("user_name");
         user_id = extras.getString("user_id");
         team_id = extras.getString("team_id");
-        individual_academy = extras.getString("individual_academy");
 
         recyclerView = findViewById(R.id.users_academies_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -53,13 +52,13 @@ public class UserShowAcademies extends AppCompatActivity {
                     DataHolder us = ds.getValue(DataHolder.class);
                     academy_list.add(us);
                 }
-                if(individual_academy!=null && !individual_academy.matches("")){
-                    userAcademyAdapter = new UserAcademyAdapter(academy_list, user_id,team_id , individual_academy);
+//                if(individual_academy!=null && !individual_academy.matches("")){
+                    userAcademyAdapter = new UserAcademyAdapter(academy_list, user_id,team_id , "");
 
-                }
-                else{
-                    userAcademyAdapter = new UserAcademyAdapter(academy_list, user_id,"" , "");
-                }
+//                }
+//                else{
+//                    userAcademyAdapter = new UserAcademyAdapter(academy_list, user_id,"" , "");
+//                }
 
 
 //                if(individual_academy!=null && !individual_academy.matches("")){

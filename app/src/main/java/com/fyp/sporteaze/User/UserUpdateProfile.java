@@ -39,10 +39,12 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserUpdateProfile extends AppCompatActivity {
 
-    String user_name,user_email,user_password,user_cnic,user_phone,user_dob,user_address,user_gender,user_id, user_image;
+    String enrolled , captain,team_id, user_name,user_email,user_password,user_cnic,user_phone,user_dob,user_address,user_gender,user_id, user_image;
     EditText et_user_name,et_user_email , et_user_password,et_user_cnic,et_user_phone,et_user_dob,et_user_address,et_user_gender;
     ImageView img_upload_user_photo;
     AppCompatButton btn_user_update;
@@ -84,6 +86,9 @@ public class UserUpdateProfile extends AppCompatActivity {
         user_password = extras.getString("user_password");
         user_cnic= extras.getString("user_cnic");
         user_image= extras.getString("user_image");
+        enrolled = extras.getString("enrolled");
+        captain = extras.getString("captain");
+        team_id = extras.getString("team_id");
 
 
         et_user_name.setText(user_name);
@@ -199,23 +204,38 @@ public class UserUpdateProfile extends AppCompatActivity {
                                     FirebaseDatabase db = FirebaseDatabase.getInstance();
                                     DatabaseReference root = db.getReference();
                                     String key = root.push().getKey();
-                                    User obj = new User(et_user_name.getText().toString(), et_user_email.getText().toString(), et_user_password.getText().toString(), et_user_cnic.getText().toString(), et_user_phone.getText().toString(),et_user_dob.getText().toString(), et_user_address.getText().toString(), et_user_gender.getText().toString() , user_id , uri.toString() , "false" , "false");
-                                    root.child("Users").child(user_id).setValue(obj);
+                                    Map<String, Object> updates = new HashMap<String,Object>();
+                                    updates.put("name" , et_user_name.getText().toString().trim());
+                                    updates.put("email" , et_user_email.getText().toString().trim());
+                                    updates.put("password" ,et_user_password.getText().toString().trim());
+                                    updates.put("cnic" , et_user_cnic.getText().toString().trim());
+                                    updates.put("phone" , et_user_phone.getText().toString().trim());
+                                    updates.put("dob" , et_user_dob.getText().toString().trim());
+                                    updates.put("address" , et_user_address.getText().toString().trim());
+                                    updates.put("gender" , et_user_gender.getText().toString().trim());
+                                    updates.put("team_id" , team_id);
+                                    updates.put("captain" , captain);
+                                    updates.put("image" , user_image);
+                                    updates.put("enrolled" , enrolled);
+                                    root.child("Users").child(user_id).updateChildren(updates);
+//                                    User obj = new User(et_user_name.getText().toString(), et_user_email.getText().toString(), et_user_password.getText().toString(), et_user_cnic.getText().toString(), et_user_phone.getText().toString(),et_user_dob.getText().toString(), et_user_address.getText().toString(), et_user_gender.getText().toString() , user_id , uri.toString() , enrolled , captain , team_id);
+//                                    root.child("Users").child(user_id).setValue(obj);
+//                                    root.child("Users").child(user_id)
                                     Toast.makeText(getApplicationContext(), "Updated Successfully", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(UserUpdateProfile.this , DashboardActivity.class);
-                                    intent.putExtra("user_name" ,et_user_name.getText().toString().trim());
-                                    intent.putExtra("user_email", et_user_email.getText().toString().trim());
-                                    startActivity(intent);
-                                    finish();
-//                                    et_user_name.setText("");
-//                                    et_user_email.setText("");
-//                                    et_user_gender.setText("");
-//                                    et_user_dob.setText("");
-//                                    et_user_address.setText("");
-//                                    et_user_password.setText("");
-//                                    et_user_cnic.setText("");
-//                                    et_user_phone.setText("");
-//                                    img_upload_user_photo.setImageResource(R.drawable.upload_profile_photo);
+//                                    Intent intent = new Intent(UserUpdateProfile.this , DashboardActivity.class);
+//                                    intent.putExtra("user_name" ,et_user_name.getText().toString().trim());
+//                                    intent.putExtra("user_email", et_user_email.getText().toString().trim());
+//                                    startActivity(intent);
+//                                    finish();
+                                    et_user_name.setText("");
+                                    et_user_email.setText("");
+                                    et_user_gender.setText("");
+                                    et_user_dob.setText("");
+                                    et_user_address.setText("");
+                                    et_user_password.setText("");
+                                    et_user_cnic.setText("");
+                                    et_user_phone.setText("");
+                                    img_upload_user_photo.setImageResource(R.drawable.upload_profile_photo);
                                 }
                             });
 
@@ -237,14 +257,29 @@ public class UserUpdateProfile extends AppCompatActivity {
             FirebaseDatabase db = FirebaseDatabase.getInstance();
             DatabaseReference root = db.getReference();
             String key = root.push().getKey();
-            User obj = new User(et_user_name.getText().toString(), et_user_email.getText().toString(), et_user_password.getText().toString(), et_user_cnic.getText().toString(), et_user_phone.getText().toString(),et_user_dob.getText().toString(), et_user_address.getText().toString(), et_user_gender.getText().toString() , user_id , user_image , "false" , "false");
-            root.child("Users").child(user_id).setValue(obj);
+
+//            User obj = new User(et_user_name.getText().toString(), et_user_email.getText().toString(), et_user_password.getText().toString(), et_user_cnic.getText().toString(), et_user_phone.getText().toString(),et_user_dob.getText().toString(), et_user_address.getText().toString(), et_user_gender.getText().toString() , user_id , user_image , enrolled , captain , team_id);
+            Map<String, Object> updates = new HashMap<String,Object>();
+            updates.put("name" , et_user_name.getText().toString().trim());
+            updates.put("email" , et_user_email.getText().toString().trim());
+            updates.put("password" ,et_user_password.getText().toString().trim());
+            updates.put("cnic" , et_user_cnic.getText().toString().trim());
+            updates.put("phone" , et_user_phone.getText().toString().trim());
+            updates.put("dob" , et_user_dob.getText().toString().trim());
+            updates.put("address" , et_user_address.getText().toString().trim());
+            updates.put("gender" , et_user_gender.getText().toString().trim());
+            updates.put("team_id" , team_id);
+            updates.put("captain" , captain);
+            updates.put("image" , user_image);
+            updates.put("enrolled" , enrolled);
+            root.child("Users").child(user_id).updateChildren(updates);
+//            root.child("Users").child(user_id).setValue(obj);
             Toast.makeText(getApplicationContext() , "Updated Successfully" , Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(UserUpdateProfile.this , DashboardActivity.class);
-            intent.putExtra("user_name" ,et_user_name.getText().toString().trim());
-            intent.putExtra("user_email", et_user_email.getText().toString().trim());
-            startActivity(intent);
-            finish();
+//            Intent intent = new Intent(UserUpdateProfile.this , DashboardActivity.class);
+//            intent.putExtra("user_name" ,et_user_name.getText().toString().trim());
+//            intent.putExtra("user_email", et_user_email.getText().toString().trim());
+//            startActivity(intent);
+//            finish();
             et_user_name.setText("");
             et_user_email.setText("");
             et_user_gender.setText("");
@@ -257,15 +292,5 @@ public class UserUpdateProfile extends AppCompatActivity {
         }
 
     }
-
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-
-
-
 
 }

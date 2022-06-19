@@ -4,9 +4,9 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
 public class User {
-    public String name,email,password,cnic,phone,dob,address,gender,user_id , image, enrolled, captain;
+    public String name,email,password,cnic,phone,dob,address,gender,user_id , image, enrolled, captain, team_id;
 
-    public User(String name, String email, String password, String cnic, String phone, String dob, String address, String gender, String user_id, String image, String enrolled, String captain) {
+    public User(String name, String email, String password, String cnic, String phone, String dob, String address, String gender, String user_id, String image, String enrolled, String captain, String team_id) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -19,10 +19,19 @@ public class User {
         this.image = image;
         this.enrolled = enrolled;
         this.captain = captain;
+        this.team_id = team_id;
     }
 
     public User() {
 
+    }
+
+    public String getTeam_id() {
+        return team_id;
+    }
+
+    public void setTeam_id(String team_id) {
+        this.team_id = team_id;
     }
 
     public String getName() {

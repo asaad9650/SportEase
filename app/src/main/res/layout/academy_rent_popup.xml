@@ -69,19 +69,7 @@
         android:textColor="#000"
         />
 
-    <TextView
-        android:id="@+id/requested_by_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Phone"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
-        android:textColor="#000"
-        android:textSize="18sp"
-        />
+
     <TextView
         android:id="@+id/requested_by_address"
         android:layout_width="match_parent"
@@ -100,7 +88,8 @@
         android:id="@+id/requested_by_expertise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Expertise"
+        android:text=""
+        android:visibility="gone"
         android:layout_centerInParent="true"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="5dp"

@@ -46,58 +46,14 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                             if(snapshot.exists()){
                                 for(DataSnapshot snapshot1: snapshot.getChildren()) {
                                     keyMain = snapshot1.getKey();
-//                                    Toast.makeText(getApplicationContext(), keyMain + " Ye hai", Toast.LENGTH_LONG).show();
                                     try {
-
-//                                        final String user_email_to_send_code = "fypsporteaze@gmail.com";
-//                                        final String pass = "sporteaze.22";
-//                                        int code = Integer.parseInt(String.format("%04d", new Random().nextInt(10000)));
-//                                        String messageToSend = "Your password reset verification code for Sporteaze is " +code;
-//                                        Properties props = new Properties();
-//                                        props.put("mail.smtp.auth" ,"true");
-//                                        props.put("mail.smtp.starttls.enable",true);
-//                                        props.put("mail.smtp.host" , "smtp.gmail.com");
-//                                        props.put("mail.smtp.port","587");
-//
-//                                        Session session = Session.getInstance(props, new javax.mail.Authenticator(){
-//                                                    @Override
-//                                                    protected PasswordAuthentication getPasswordAuthentication() {
-//                                                        return new PasswordAuthentication(user_email_to_send_code, pass);
-//                                                    }
-//                                                });
-//                                        try{
-//                                            MimeMessage message = new MimeMessage(session);
-//                                            message.setFrom(new InternetAddress(user_email_to_send_code));
-//                                            message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse("asaad9650@gmail.com"));
-//                                            message.setSubject("Password Reset For Sporteaze");
-//                                            message.setText(messageToSend);
-//                                            Transport.send(message);
-//                                            Toast.makeText(ForgotPasswordActivity.this, "Email sent successfully", Toast.LENGTH_SHORT).show();
-//                                        }
-//                                        catch (MessagingException e){
-//                                            throw new RuntimeException(e);
-//                                        }
-//                                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-//                                        StrictMode.setThreadPolicy(policy);
-
-
                                         Toast.makeText(ForgotPasswordActivity.this, "Email Sent", Toast.LENGTH_SHORT).show();
                                         int code = Integer.parseInt(String.format("%04d", new Random().nextInt(10000)));
                                         JavaMailAPI javaMailAPI = new JavaMailAPI(ForgotPasswordActivity.this,
                                                 email.getText().toString().trim(),
                                                 "Password Reset For Sporteaze",
-                                                "Your password reset verification code for Sporteaze is " + code  );
+                                                "Your password reset verification code for Sporteaze is " + code + ".\nPlease ignore this email if you have not requested any password reset code" );
                                         javaMailAPI.execute();
-
-//                                        GMailSender sender = new GMailSender("fypsporteaze21@gmail.com", "sporteaze.22");
-//                                        sender.sendMail("Password Reset For Sporteaze",
-//                                                "Your password reset verification code for Sporteaze is " +code,
-//                                                "fypsporteaze@gmail.com",
-//                                                "saad.amir@foundri.net");
-
-
-//                                        Toast.makeText(getApplicationContext(), keyMain + " Or Ye hai code "+ code, Toast.LENGTH_LONG).show();
-//
                                         Intent intent = new Intent(ForgotPasswordActivity.this, CodeActivity.class);
                                         intent.putExtra("code", code);
                                         intent.putExtra("key", keyMain);
@@ -107,15 +63,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                                     }
                                 }
-
-//                                    break;
-//                                }
-//                                new Thread(new Runnable() {
-//                                    @Override
-//                                    public void run() {
-//
-//                                    }
-//                                }).start();
                             }
                             else{
                                 Toast.makeText(getApplicationContext(), "Email does not exist.", Toast.LENGTH_SHORT).show();
@@ -124,7 +71,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
                         }
                     });
                 }
@@ -133,7 +79,5 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 }

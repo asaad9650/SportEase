@@ -19,6 +19,7 @@ import com.fyp.sporteaze.BackPressDialog;
 import com.fyp.sporteaze.Event.AcceptedMatchRequest;
 import com.fyp.sporteaze.Event.ShowCreatedPosts;
 import com.fyp.sporteaze.Event.UserEventHome;
+import com.fyp.sporteaze.Event.UserShowPost;
 import com.fyp.sporteaze.LoginActivity;
 import com.fyp.sporteaze.Model.JoinTeam;
 import com.fyp.sporteaze.Model.User;
@@ -170,6 +171,7 @@ public class DashboardActivity extends AppCompatActivity  {
                 intent.putExtra("user_id",user_id);
                 intent.putExtra("user_name" , user_name);
                 intent.putExtra("captain", captain);
+                intent.putExtra("team_id" , team_id);
                 startActivity(intent);
 //                finish();
             }
@@ -220,6 +222,7 @@ public class DashboardActivity extends AppCompatActivity  {
                             intent.putExtra("user_email", user.email);
                             intent.putExtra("user_name",user.name);
                             intent.putExtra("captain", captain);
+                            intent.putExtra("team_id" , team_id);
                             startActivity(intent);
 //                            finish();
                         }
@@ -269,19 +272,19 @@ public class DashboardActivity extends AppCompatActivity  {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getTitle().equals("Home")){
-//                    Intent intent = new Intent(DashboardActivity.this, DashboardActivity.class);
-//                    intent.putExtra("user_email" , user_email);
-//                    intent.putExtra("user_name", user_name);
-//                    intent.putExtra("captain" , captain);
-//                    intent.putExtra("user_id", user_id);
-//                    intent.putExtra("user_dob", user_dob);
-//                    intent.putExtra("user_phone" , user_phone);
-//                    intent.putExtra("user_address" , user_address);
-//                    intent.putExtra("team_id" , team_id);
-//
-////                                    intent.putExtra("user_id",userMod.user_id);
-//                    startActivity(intent);
-//                    drawer.closeDrawers();
+                    Intent intent = new Intent(DashboardActivity.this, UserShowPost.class);
+                    intent.putExtra("user_email" , user_email);
+                    intent.putExtra("user_name", user_name);
+                    intent.putExtra("captain" , captain);
+                    intent.putExtra("user_id", user_id);
+                    intent.putExtra("user_dob", user_dob);
+                    intent.putExtra("user_phone" , user_phone);
+                    intent.putExtra("user_address" , user_address);
+                    intent.putExtra("team_id" , team_id);
+
+//                                    intent.putExtra("user_id",userMod.user_id);
+                    startActivity(intent);
+                    drawer.closeDrawers();
                 }
                 if(item.getTitle().equals("Search")){
                     Intent intent = new Intent(DashboardActivity.this , UserSearch.class);
@@ -370,7 +373,7 @@ public class DashboardActivity extends AppCompatActivity  {
                     drawer.closeDrawers();
 //                    return true;
                 }
-                else if(item.getTitle().equals("Academy Registration"))
+                else if(item.getTitle().equals("Join an Academy"))
                 {
                     //  googleAuth.getInstance().signOut();
                     Intent intent = new Intent(DashboardActivity.this , UserShowAcademies.class);
@@ -382,13 +385,29 @@ public class DashboardActivity extends AppCompatActivity  {
                     intent.putExtra("user_phone" , user_phone);
                     intent.putExtra("user_address" , user_address);
                     intent.putExtra("team_id" , team_id);
-
-//                                    intent.putExtra("user_id",userMod.user_id);
                     startActivity(intent);
 //                    finish();
 //                    Toast.makeText(getApplicationContext() , item.getTitle().toString() , Toast.LENGTH_SHORT).show();
                     drawer.closeDrawers();
 //                    return true;
+                }
+                else if(item.getTitle().equals("My Team"))
+                {
+                    //  googleAuth.getInstance().signOut();
+//                    Intent intent = new Intent(DashboardActivity.this , UserShowPost.class);
+//                    intent.putExtra("user_email" , user_email);
+//                    intent.putExtra("user_name", user_name);
+//                    intent.putExtra("captain" , captain);
+//                    intent.putExtra("user_id", user_id);
+//                    intent.putExtra("user_dob", user_dob);
+//                    intent.putExtra("user_phone" , user_phone);
+//                    intent.putExtra("user_address" , user_address);
+//                    intent.putExtra("team_id" , team_id);
+//                    startActivity(intent);
+////                    finish();
+////                    Toast.makeText(getApplicationContext() , item.getTitle().toString() , Toast.LENGTH_SHORT).show();
+//                    drawer.closeDrawers();
+////                    return true;
                 }
                 else if (item.getTitle().equals("Update profile"))
                 {
@@ -413,6 +432,9 @@ public class DashboardActivity extends AppCompatActivity  {
                                 intent.putExtra("user_address",user.address );
                                 intent.putExtra("user_gender",user.gender);
                                 intent.putExtra("user_image",user.image);
+                                intent.putExtra("team_id" , team_id);
+                                intent.putExtra("enrolled" , user.enrolled);
+                                intent.putExtra("captain" , user.captain);
                                 startActivity(intent);
 
                             }
@@ -450,7 +472,7 @@ public class DashboardActivity extends AppCompatActivity  {
 
     }
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && captain.matches("yes")) {
+        if (keyCode == KeyEvent.KEYCODE_BACK ) {
 
             backPressDialog.logout(this);
 
@@ -458,10 +480,8 @@ public class DashboardActivity extends AppCompatActivity  {
 
             return true;
         }
-//        else{
-            return super.onKeyDown(keyCode, event);
-//        }
 
+        return super.onKeyDown(keyCode, event);
     }
 
 

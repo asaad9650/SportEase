@@ -90,7 +90,7 @@ public class IndividualCoachAdapter extends RecyclerView.Adapter {
 //                        }
 //                        else{
                             if(user_name.equals("") || user_name == null){
-                                CoachBooking coachBooking = new CoachBooking(coaches.getAcademy_id(),"pending",user_email,key, coaches.getCoach_id() , coaches.getCoach_name(),coaches.getCoach_address(), coaches.getCoach_age(), coaches.getCoach_expertise(), coaches.getCoach_phone(), coaches.getCoach_charges(), "individual");
+                                CoachBooking coachBooking = new CoachBooking(coaches.getAcademy_id(),"pending",user_email,user_id, coaches.getCoach_id() , coaches.getCoach_name(),coaches.getCoach_address(), coaches.getCoach_age(), coaches.getCoach_expertise(), coaches.getCoach_phone(), coaches.getCoach_charges(), "individual");
                                 root.child("coach_bookings").child(user_id).setValue(coachBooking);
                                 DatabaseReference db_ref = FirebaseDatabase.getInstance().getReference();
                                 db_ref.child("Users").child(user_id).child("individual_coach_booking_id").setValue(key);
@@ -98,7 +98,7 @@ public class IndividualCoachAdapter extends RecyclerView.Adapter {
 
                             }
                             else{
-                                CoachBooking coachBooking = new CoachBooking(coaches.getAcademy_id(),"pending",user_name,key, coaches.getCoach_id() , coaches.getCoach_name(),coaches.getCoach_address(), coaches.getCoach_age(), coaches.getCoach_expertise(), coaches.getCoach_phone(), coaches.getCoach_charges(), "individual");
+                                CoachBooking coachBooking = new CoachBooking(coaches.getAcademy_id(),"pending",user_name,user_id, coaches.getCoach_id() , coaches.getCoach_name(),coaches.getCoach_address(), coaches.getCoach_age(), coaches.getCoach_expertise(), coaches.getCoach_phone(), coaches.getCoach_charges(), "individual");
                                 root.child("coach_bookings").child(user_id).setValue(coachBooking);
                                 DatabaseReference db_ref = FirebaseDatabase.getInstance().getReference();
                                 db_ref.child("Users").child(user_id).child("individual_coach_booking_id").setValue(key);

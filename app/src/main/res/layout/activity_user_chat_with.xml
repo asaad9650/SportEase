@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center"
+            android:padding="10dp"
             >
             <TextView
                 android:id="@+id/chat_with_email_or_name"
@@ -36,7 +37,6 @@
                 android:layout_height="wrap_content"
                 android:text="Email or Name"
                 android:textColor="#fff"
-                android:textAlignment="center"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 ></TextView>

@@ -195,7 +195,24 @@ public class UserShowPost extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getTitle().equals("Home")){
-                    Intent intent = new Intent(UserShowPost.this, DashboardActivity.class);
+//                    Intent intent = new Intent(UserShowPost.this, DashboardActivity.class);
+//                    intent.putExtra("user_email" , user_email);
+//                    intent.putExtra("user_name", user_name);
+//                    intent.putExtra("captain" , captain);
+//                    intent.putExtra("user_id", user_id);
+//                    intent.putExtra("user_dob", user_dob);
+//                    intent.putExtra("user_phone" , user_phone);
+//                    intent.putExtra("user_address" , user_address);
+//                    intent.putExtra("team_id" , team_id);
+//
+////                                    intent.putExtra("user_id",userMod.user_id);
+//                    startActivity(intent);
+//                    drawer.closeDrawers();
+                }
+                else if(item.getTitle().equals("My Team"))
+                {
+                    //  googleAuth.getInstance().signOut();
+                    Intent intent = new Intent(UserShowPost.this , DashboardActivity.class);
                     intent.putExtra("user_email" , user_email);
                     intent.putExtra("user_name", user_name);
                     intent.putExtra("captain" , captain);
@@ -204,10 +221,11 @@ public class UserShowPost extends AppCompatActivity {
                     intent.putExtra("user_phone" , user_phone);
                     intent.putExtra("user_address" , user_address);
                     intent.putExtra("team_id" , team_id);
-
-//                                    intent.putExtra("user_id",userMod.user_id);
                     startActivity(intent);
+                    finish();
+//                    Toast.makeText(getApplicationContext() , item.getTitle().toString() , Toast.LENGTH_SHORT).show();
                     drawer.closeDrawers();
+//                    return true;
                 }
                 if(item.getTitle().equals("Search")){
 //                    Toast.makeText(UserShowPost.this, "Search Clicked", Toast.LENGTH_SHORT).show();
@@ -298,7 +316,7 @@ public class UserShowPost extends AppCompatActivity {
                     drawer.closeDrawers();
 //                    return true;
                 }
-                else if(item.getTitle().equals("Academy Registration"))
+                else if(item.getTitle().equals("Join an Academy"))
                 {
                     //  googleAuth.getInstance().signOut();
                     Intent intent = new Intent(UserShowPost.this , UserShowAcademies.class);
@@ -341,6 +359,9 @@ public class UserShowPost extends AppCompatActivity {
                                 intent.putExtra("user_address",user.address );
                                 intent.putExtra("user_gender",user.gender);
                                 intent.putExtra("user_image",user.image);
+                                intent.putExtra("team_id" , team_id);
+                                intent.putExtra("enrolled" , user.enrolled);
+                                intent.putExtra("captain" , user.captain);
                                 startActivity(intent);
 
                             }

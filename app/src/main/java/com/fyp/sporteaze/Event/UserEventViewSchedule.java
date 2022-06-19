@@ -33,30 +33,25 @@ public class UserEventViewSchedule extends AppCompatActivity {
         captain = extras.getString("captain");
         team_id = extras.getString("team_id");
 
+view_past_matches.setVisibility(View.GONE);
 
-
-        view_past_matches.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(UserEventViewSchedule.this , UserEventViewPastMatches.class);
-                intent.putExtra("user_id", user_id);
-                intent.putExtra("user_name" , user_name);
-                intent.putExtra("user_email" , user_email);
-                intent.putExtra("team_id" , team_id);
-                startActivity(intent);
-
-            }
-        });
+//        view_past_matches.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(UserEventViewSchedule.this , UserEventViewPastMatches.class);
+//                intent.putExtra("user_id", user_id);
+//                intent.putExtra("user_name" , user_name);
+//                intent.putExtra("user_email" , user_email);
+//                intent.putExtra("team_id" , team_id);
+//                startActivity(intent);
+//
+//            }
+//        });
 
         view_upcoming_matches.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserEventViewSchedule.this , UserEventViewUpcomingMatches.class);
-                intent.putExtra("user_id", user_id);
-                intent.putExtra("user_name" , user_name);
-                intent.putExtra("user_email" , user_email);
-                intent.putExtra("team_id" , team_id);
-                startActivity(intent);
+
             }
         });
 

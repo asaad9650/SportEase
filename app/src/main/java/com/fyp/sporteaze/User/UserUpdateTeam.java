@@ -3,11 +3,13 @@ package com.fyp.sporteaze.User;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.fyp.sporteaze.Model.Team;
@@ -27,12 +29,15 @@ public class UserUpdateTeam extends AppCompatActivity {
     EditText et_team_name,et_email_1,et_email_2,et_email_3,et_email_4,et_email_5,et_email_6,et_email_7,et_email_8,et_email_9,et_email_10 , et_email_11;
     AppCompatButton btn_add_team;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    ConstraintLayout update_team_layout;
+    ProgressBar loader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_update_team);
-
+        update_team_layout = findViewById(R.id.update_team_layout);
+        loader = findViewById(R.id.loader);
         et_team_name = findViewById(R.id.et_team_name);
         et_email_1 = findViewById(R.id.et_email_1);
         et_email_2 = findViewById(R.id.et_email_2);
@@ -126,7 +131,10 @@ public class UserUpdateTeam extends AppCompatActivity {
                             et_email_7.getText().toString().trim(),et_email_8.getText().toString().trim(),et_email_9.getText().toString().trim(),et_email_10.getText().toString().trim(),
                             et_email_11.getText().toString().trim(),team_id,user_id
                     );
+                    update_team_layout.setVisibility(View.GONE);
+                    loader.setVisibility(View.VISIBLE);
                     pushData(team);
+
 //                    pushData(et_team_name,et_email_1, et_email_2, et_email_3, et_email_4,et_email_5,et_email_6,et_email_7,et_email_8,et_email_9,et_email_10,et_email_11);
                 }
 
@@ -156,17 +164,20 @@ public class UserUpdateTeam extends AppCompatActivity {
         DatabaseReference cap_val = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
 
         cap_ref.child("Users").child(user_id).child("captain").setValue("no");
+        cap_ref.child("Users").child(user_id).child("enrolled").setValue("no");
+        cap_ref.child("Users").child(user_id).child(team_id).removeValue();
+        cap_ref.child("Users").child(user_id).child("team_id").setValue("");
+        Intent intent = new Intent(UserUpdateTeam.this , DashboardActivity.class);
+        intent.putExtra("user_name" , user_name);
+        intent.putExtra("user_email" , user_email);
+        intent.putExtra("user_id",  user_id);
+
         cap_val.child("captain").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String cap_ = snapshot.getValue(String.class);
-                Intent intent = new Intent(UserUpdateTeam.this , DashboardActivity.class);
-                intent.putExtra("user_name" , user_name);
-                intent.putExtra("user_email" , user_email);
+
                 intent.putExtra("captain" , cap_);
-                intent.putExtra("user_id",  user_id);
-                startActivity(intent );
-                finish();
 
             }
 
@@ -175,6 +186,9 @@ public class UserUpdateTeam extends AppCompatActivity {
 
             }
         });
+        Toast.makeText(UserUpdateTeam.this, "Team updated successfully", Toast.LENGTH_SHORT).show();
+        startActivity(intent );
+        finish();
 
 
 
@@ -205,7 +219,6 @@ public class UserUpdateTeam extends AppCompatActivity {
                         userRef2.child("Users").child(user.user_id).child(team.getTeam_id()).setValue(userAddTeam);
                     }
 
-                    DatabaseReference cap_ref = FirebaseDatabase.getInstance().getReference();
 
 //                    userRef2.child("Users").child(user_id).child("team_id").setValue(team.getTeam_id());
 

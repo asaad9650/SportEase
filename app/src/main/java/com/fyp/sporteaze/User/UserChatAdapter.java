@@ -62,7 +62,6 @@ public class UserChatAdapter extends RecyclerView.Adapter{
                     }
                     else {
                         intent.putExtra("user_chat_with" , users.name);
-
                     }
                     view.getContext().startActivity(intent);
 

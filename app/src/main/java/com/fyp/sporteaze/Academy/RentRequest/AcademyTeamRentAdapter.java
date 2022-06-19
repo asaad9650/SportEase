@@ -53,7 +53,6 @@ public class AcademyTeamRentAdapter  extends RecyclerView.Adapter{
                 TextView requested_by_name = dialogView.findViewById(R.id.requested_by_name);
                 TextView requested_by_age = dialogView.findViewById(R.id.requested_by_age);
                 TextView requested_by_email = dialogView.findViewById(R.id.requested_by_email);
-                TextView requested_by_phone = dialogView.findViewById(R.id.requested_by_phone);
                 TextView requested_by_address = dialogView.findViewById(R.id.requested_by_address);
                 TextView requested_by_expertise = dialogView.findViewById(R.id.requested_by_expertise);
                 AppCompatButton btn_popup_academy_request_accept = dialogView.findViewById(R.id.btn_popup_academy_request_accept);
@@ -61,10 +60,10 @@ public class AcademyTeamRentAdapter  extends RecyclerView.Adapter{
 
                 requested_by_name.setText("Team Name: "+academy_registration_team.getTeam_name());
                 requested_by_address.setText("Captain name: " + academy_registration_team.getCaptain_name());
-                requested_by_phone.setText("Requested Academy Name: " + academy_registration_team.getAcademy_name());
+                requested_by_email.setText("Requested Academy Name: " + academy_registration_team.getAcademy_name());
                 requested_by_age.setText("Team id: " + academy_registration_team.getTeam_id());
 //                requested_by_age.setVisibility(View.GONE);
-                requested_by_email.setVisibility(View.GONE);
+//                requested_by_email.setVisibility(View.GONE);
                 requested_by_expertise.setVisibility(View.GONE);
 
                 builder.setView(dialogView);

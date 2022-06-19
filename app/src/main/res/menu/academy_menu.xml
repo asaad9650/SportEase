@@ -32,12 +32,6 @@
         android:icon="@drawable/user_icon"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_bar_team_rent_request"
-        android:orderInCategory="100"
-        android:title="Team registration request"
-        android:icon="@drawable/team_logo"
-        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_bar_team_invoice"
