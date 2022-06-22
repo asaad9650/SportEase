@@ -49,9 +49,6 @@ public class AcademyDashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_academy_dashboard);
 
-
-//        view_ground_request_box = findViewById(R.id.view_ground_request_box);
-//        view_coach_request_box = findViewById(R.id.view_coach_request_box);
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         academy_email = extras.getString("academy_email");

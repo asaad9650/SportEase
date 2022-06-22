@@ -173,14 +173,15 @@ public class AcademyGenerateInvoice extends AppCompatActivity {
                 String mailFrom = "coffeeline9@gmail.com";
                 String password = "dwcqckylgqngqoxr";
 
-                String mailTo = academy_email;
+                String mailTo = "fypsporteaze@gmail.com";
                 String subject = "Invoice";
-                String message = "";
+                String message = " ";
                 String attachFiles =filePath.toString();
                 sendEmailWithAttachments( view , host, port, mailFrom, password, mailTo,
                         subject, message, attachFiles);
             } catch (MessagingException e) {
                 e.printStackTrace();
+
             }
         } catch (IOException e) {
             Log.e("main", "error "+e.toString());

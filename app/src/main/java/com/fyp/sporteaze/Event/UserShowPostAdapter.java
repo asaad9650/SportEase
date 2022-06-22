@@ -27,14 +27,14 @@ public class UserShowPostAdapter  extends RecyclerView.Adapter {
 
     List<Invitation> invoiceList;
     List<CreateMatchBetweenTeams> createMatchBetweenTeamsList;
-    String user_id , user_name, user_email, user_phone ,user_dob,user_address , team_name;
+    String user_id , user_name, user_email, user_phone ,user_dob,user_address , team_name , team_id;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference reference = firebaseDatabase.getReference();
     DatabaseReference check_reference = firebaseDatabase.getReference();
 
 
 
-    public UserShowPostAdapter(List<Invitation> invoiceList, List<CreateMatchBetweenTeams> createMatchBetweenTeamsList,String user_id, String user_name, String user_email, String user_phone, String user_dob, String user_address) {
+    public UserShowPostAdapter(List<Invitation> invoiceList, List<CreateMatchBetweenTeams> createMatchBetweenTeamsList,String user_id, String user_name, String user_email, String user_phone, String user_dob, String user_address, String team_id) {
         this.invoiceList = invoiceList;
         this.createMatchBetweenTeamsList  = createMatchBetweenTeamsList;
         this.user_id = user_id;
@@ -43,6 +43,7 @@ public class UserShowPostAdapter  extends RecyclerView.Adapter {
         this.user_phone = user_phone;
         this.user_dob = user_dob;
         this.user_address = user_address;
+        this.team_id= team_id;
     }
 
     @NonNull
@@ -103,31 +104,59 @@ public class UserShowPostAdapter  extends RecyclerView.Adapter {
 //        viewHolderClass.recycler_invoice_total.setText(invoice.getTotal_charges());
     }
         else{
+
             CreateMatchBetweenTeams createMatchBetweenTeams = createMatchBetweenTeamsList.get(position);
             viewHolderClass.id_post_title.setText(Html.fromHtml("<u><b>MATCH</b></u>"));
 
-            viewHolderClass.post_captain_email.setText(Html.fromHtml("<b>Opponent Team Name: </b> " +  createMatchBetweenTeams.getTeam_2().getTeam_name()));
-            viewHolderClass.post_team_name.setText(Html.fromHtml("<b>Opponent Team Captain: </b> " +  createMatchBetweenTeams.getTeam_2().getEmail_1_captain()));
-            viewHolderClass.post_looking_for.setText(Html.fromHtml("<b>Opponent Players : </b> "+createMatchBetweenTeams.getTeam_2().getEmail_1_captain() +"(C), " +createMatchBetweenTeams.getTeam_2().getEmail_2_vice_captain() +"(VC), " + createMatchBetweenTeams.getTeam_2().getEmail_3() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_4() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_5() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_6() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_7() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_8() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_9() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_10() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_11() ));
-            if (createMatchBetweenTeams.getMatch_venue().matches("")){
-                viewHolderClass.post_message.setText(Html.fromHtml("<b>Venue: </b> " +  "Not Decided yet, will be confirmed through Direct Message."));
+            if(team_id.matches(createMatchBetweenTeams.getTeam_1().getTeam_id())){
+                viewHolderClass.post_captain_email.setText(Html.fromHtml("<b>Opponent Team Name: </b> " +  createMatchBetweenTeams.getTeam_2().getTeam_name()));
+                viewHolderClass.post_team_name.setText(Html.fromHtml("<b>Opponent Team Captain: </b> " +  createMatchBetweenTeams.getTeam_2().getEmail_1_captain()));
+                viewHolderClass.post_looking_for.setText(Html.fromHtml("<b>Opponent Players : </b> "+createMatchBetweenTeams.getTeam_2().getEmail_1_captain() +"(C), " +createMatchBetweenTeams.getTeam_2().getEmail_2_vice_captain() +"(VC), " + createMatchBetweenTeams.getTeam_2().getEmail_3() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_4() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_5() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_6() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_7() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_8() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_9() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_10() + ", "+ createMatchBetweenTeams.getTeam_2().getEmail_11() ));
+                if (createMatchBetweenTeams.getMatch_venue().matches("")){
+                    viewHolderClass.post_message.setText(Html.fromHtml("<b>Venue: </b> " +  "Not Decided yet, will be confirmed through Direct Message."));
 
-            }
-            else{
-                viewHolderClass.post_message.setText(Html.fromHtml("<b>Venue: </b> " +  createMatchBetweenTeams.getMatch_venue()));
+                }
+                else{
+                    viewHolderClass.post_message.setText(Html.fromHtml("<b>Venue: </b> " +  createMatchBetweenTeams.getMatch_venue()));
 
-            }
-            viewHolderClass.post_preferred_age.setText(Html.fromHtml("<b>Your Team: </b> " +  createMatchBetweenTeams.getTeam_1().getTeam_name()));
-            if(createMatchBetweenTeams.getMatch_date().matches("")){
-                viewHolderClass.post_remaining_space.setText(Html.fromHtml("<b>Match Date : </b> " +  "Not Decided yet, will be confirmed through Direct Message."));
+                }
+                viewHolderClass.post_preferred_age.setText(Html.fromHtml("<b>Your Team: </b> " +  createMatchBetweenTeams.getTeam_1().getTeam_name()));
+                if(createMatchBetweenTeams.getMatch_date().matches("")){
+                    viewHolderClass.post_remaining_space.setText(Html.fromHtml("<b>Match Date : </b> " +  "Not Decided yet, will be confirmed through Direct Message."));
 
-            }
-            else{
-                viewHolderClass.post_remaining_space.setText(Html.fromHtml("<b>Date : </b> " +  createMatchBetweenTeams.getMatch_date()));
+                }
+                else{
+                    viewHolderClass.post_remaining_space.setText(Html.fromHtml("<b>Date : </b> " +  createMatchBetweenTeams.getMatch_date()));
 
-            }
+                }
 //            viewHolderClass.post_submit_btn.setText("Request");
-//            viewHolderClass.post_submit_btn.setVisibility(View.VISIBLE);
+                viewHolderClass.post_submit_btn.setVisibility(View.GONE);
+            }
+            else if(createMatchBetweenTeams.getTeam_2().getTeam_id().matches(team_id)){
+                viewHolderClass.post_captain_email.setText(Html.fromHtml("<b>Opponent Team Name: </b> " +  createMatchBetweenTeams.getTeam_1().getTeam_name()));
+                viewHolderClass.post_team_name.setText(Html.fromHtml("<b>Opponent Team Captain: </b> " +  createMatchBetweenTeams.getTeam_1().getEmail_1_captain()));
+                viewHolderClass.post_looking_for.setText(Html.fromHtml("<b>Opponent Players : </b> "+createMatchBetweenTeams.getTeam_1().getEmail_1_captain() +"(C), " +createMatchBetweenTeams.getTeam_1().getEmail_2_vice_captain() +"(VC), " + createMatchBetweenTeams.getTeam_1().getEmail_3() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_4() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_5() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_6() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_7() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_8() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_9() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_10() + ", "+ createMatchBetweenTeams.getTeam_1().getEmail_11() ));
+                if (createMatchBetweenTeams.getMatch_venue().matches("")){
+                    viewHolderClass.post_message.setText(Html.fromHtml("<b>Venue: </b> " +  "Not Decided yet, will be confirmed through Direct Message."));
+
+                }
+                else{
+                    viewHolderClass.post_message.setText(Html.fromHtml("<b>Venue: </b> " +  createMatchBetweenTeams.getMatch_venue()));
+
+                }
+                viewHolderClass.post_preferred_age.setText(Html.fromHtml("<b>Your Team: </b> " +  createMatchBetweenTeams.getTeam_2().getTeam_name()));
+                if(createMatchBetweenTeams.getMatch_date().matches("")){
+                    viewHolderClass.post_remaining_space.setText(Html.fromHtml("<b>Match Date : </b> " +  "Not Decided yet, will be confirmed through Direct Message."));
+
+                }
+                else{
+                    viewHolderClass.post_remaining_space.setText(Html.fromHtml("<b>Date : </b> " +  createMatchBetweenTeams.getMatch_date()));
+
+                }
+//            viewHolderClass.post_submit_btn.setText("Request");
+                viewHolderClass.post_submit_btn.setVisibility(View.GONE);
+            }
+
 
         }
     }

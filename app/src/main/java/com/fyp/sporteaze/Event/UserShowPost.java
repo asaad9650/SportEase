@@ -97,7 +97,7 @@ public class UserShowPost extends AppCompatActivity {
                         Invitation us = ds.getValue(Invitation.class);
                         invitationList.add(us);
                     }
-                    userShowPostAdapter = new UserShowPostAdapter(invitationList, null  , user_id, user_name , user_email, user_phone , user_dob,user_address);
+                    userShowPostAdapter = new UserShowPostAdapter(invitationList, null  , user_id, user_name , user_email, user_phone , user_dob,user_address, team_id);
                     posts_recycler_view.setAdapter(userShowPostAdapter);
                     posts_recycler_view.setVisibility(View.VISIBLE);
                     no_new_post.setVisibility(View.GONE);
@@ -133,7 +133,7 @@ public class UserShowPost extends AppCompatActivity {
                                 createMatchBetweenTeamsList.add(createMatchBetweenTeams);
                             }
 //                        }
-                        userShowPostAdapter = new UserShowPostAdapter(null, createMatchBetweenTeamsList  , user_id, user_name , user_email, user_phone , user_dob,user_address);
+                        userShowPostAdapter = new UserShowPostAdapter(null, createMatchBetweenTeamsList  , user_id, user_name , user_email, user_phone , user_dob,user_address , team_id);
                         posts_recycler_view.setAdapter(userShowPostAdapter);
                         posts_recycler_view.setVisibility(View.VISIBLE);
                         no_new_post.setVisibility(View.GONE);

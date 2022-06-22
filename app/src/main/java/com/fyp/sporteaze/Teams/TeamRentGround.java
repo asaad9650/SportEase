@@ -114,7 +114,6 @@ public class TeamRentGround extends AppCompatActivity {
                 }
                 else{
                     if(ground_date.matches("[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$") && ground_time.matches("([01]?[0-9]|2[0-3]):[0-5][0-9]-([01]?[0-9]|2[0-3]):[0-5][0-9]")){
-
                         String key = databaseReference.push().getKey();
                         TeamGroundBooking teamGroundBooking = new TeamGroundBooking(key, team_id , ground_name , ground_id , ground_size , ground_address , ground_time , ground_date , ground_rent_purpose , _with_medical  , _with_analyst , ground_charges , "pending" , academy_id , team_name);
                         databaseReference.child("team_ground_bookings").child(key).setValue(teamGroundBooking);

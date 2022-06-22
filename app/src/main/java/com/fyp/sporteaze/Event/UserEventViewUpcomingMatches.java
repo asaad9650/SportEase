@@ -65,7 +65,7 @@ public class UserEventViewUpcomingMatches extends AppCompatActivity {
                         createMatchBetweenTeamsList.add(createMatchBetweenTeams);
                     }
 //                        }
-                    upcomingMatchesAdapter = new UpcomingMatchesAdapter(createMatchBetweenTeamsList  , user_id, user_name , user_email, user_phone , user_dob,user_address);
+                    upcomingMatchesAdapter = new UpcomingMatchesAdapter(createMatchBetweenTeamsList  , user_id, user_name , user_email, user_phone , user_dob,user_address , team_id);
                     recycler_upcoming_matches.setAdapter(upcomingMatchesAdapter);
                     recycler_upcoming_matches.setVisibility(View.VISIBLE);
 //                    no_new_post.setVisibility(View.GONE);
